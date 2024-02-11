@@ -60,7 +60,7 @@ function InviteDialog() {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex items-center justify-between mt-4">
+        <div className="mt-4 flex items-center justify-between">
           <span className="text-xl">Convidados</span>
           {!isGuestFormVisible ? (
             <Button
@@ -108,7 +108,7 @@ function InviteDialog() {
               />
             </Form>
 
-            <Button className="bg-green-700 hover:bg-green-900 mt-4 ml-auto flex">
+            <Button className="mt-4 ml-auto flex bg-green-700 hover:bg-green-900">
               Salvar
             </Button>
           </div>
