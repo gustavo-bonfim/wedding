@@ -17,8 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" className={inter.variable}>
-      <body className="container mx-auto min-h-screen p-4 antialiased">
-        {children}
+      <body>
+        <div className="container mx-auto min-h-screen p-4 antialiased">
+          {children}
+        </div>
       </body>
       <Toaster richColors />
     </html>
