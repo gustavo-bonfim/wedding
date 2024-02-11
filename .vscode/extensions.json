@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "naumovs.color-highlight",
+    "bradlc.vscode-tailwindcss",
+    "biomejs.biome"
+  ]
+}
