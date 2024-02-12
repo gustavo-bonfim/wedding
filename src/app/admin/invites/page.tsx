@@ -21,11 +21,13 @@ function NewInvite() {
       <div className="mt-6">
         <h2 className="font-semibold text-xl">Lista de convites adicionados</h2>
 
-        <span className="font-semibold text-xl">Filtrar</span>
-        <form className="mt-2 flex w-[300px] items-center rounded-full border border-foreground px-4">
-          <Search size={15} />
-          <Input placeholder="Buscar convidados" />
-        </form>
+        <div className="mt-4 flex items-center gap-4">
+          <span className="text-xl">Filtrar</span>
+          <form className="mt-2 flex w-[300px] items-center rounded-full border border-foreground px-4">
+            <Search size={15} />
+            <Input placeholder="Buscar convidados" />
+          </form>
+        </div>
 
         <div className="mt-6 grid grid-cols-3">
           <Card>

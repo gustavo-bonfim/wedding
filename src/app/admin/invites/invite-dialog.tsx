@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Trash } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -89,30 +90,42 @@ function InviteDialog() {
           </div>
         </div>
 
-        {isGuestFormVisible && (
-          <div>
-            <Form {...form}>
-              <FormField
-                name="name"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nome</FormLabel>
-                    <FormControl>
-                      <Input placeholder="teste" {...field} />
-                    </FormControl>
-                    <FormDescription>Nome do convidado</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </Form>
+        <AnimatePresence>
+          {isGuestFormVisible && (
+            <motion.div
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+            >
+              <Form {...form}>
+                <FormField
+                  name="name"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Nome</FormLabel>
+                      <FormControl>
+                        <Input placeholder="teste" {...field} />
+                      </FormControl>
+                      <FormDescription>Nome do convidado</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </Form>
 
-            <Button className="mt-4 ml-auto flex bg-green-700 hover:bg-green-900">
-              Salvar
-            </Button>
-          </div>
-        )}
+              <Button className="mt-4 ml-auto flex bg-green-700 hover:bg-green-900">
+                Salvar
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </DialogContent>
     </Dialog>
   );
