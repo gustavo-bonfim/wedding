@@ -1,16 +1,9 @@
-import { Plus, Search, Trash } from 'lucide-react';
-import { Button } from '~/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '~/components/ui/card';
+import { Search } from 'lucide-react';
 import { Input } from '~/components/ui/input';
 import InviteDialog from './invite-dialog';
+import InviteList from './invite-list';
 
-function NewInvite() {
+async function Invites() {
   return (
     <div>
       <div className="flex justify-between">
@@ -28,34 +21,11 @@ function NewInvite() {
             <Input placeholder="Buscar convidados" />
           </form>
         </div>
-
-        <div className="mt-6 grid grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                <span>Convite 2342-234234-324</span>
-                <Button size="sm">
-                  <Plus size={15} />
-                </Button>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span>Gustavo Bonfim</span>
-
-                <Button variant="destructive" size="sm">
-                  <Trash size={15} />
-                </Button>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <span className="ml-auto">Criado em 01/01/2024</span>
-            </CardFooter>
-          </Card>
-        </div>
       </div>
+
+      <InviteList />
     </div>
   );
 }
 
-export default NewInvite;
+export default Invites;
