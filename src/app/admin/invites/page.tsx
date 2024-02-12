@@ -1,4 +1,5 @@
 import { Search } from 'lucide-react';
+import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
 import InviteDialog from './invite-dialog';
 import InviteList from './invite-list';
@@ -8,7 +9,7 @@ async function Invites() {
     <div>
       <div className="flex justify-between">
         <h1 className="font-bold text-3xl">Convites</h1>
-        <InviteDialog />
+        <InviteDialog trigger={<Button>Adicionar</Button>} />
       </div>
 
       <div className="mt-6">

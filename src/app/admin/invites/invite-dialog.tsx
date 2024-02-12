@@ -3,8 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Loader, Trash } from 'lucide-react';
-import { parseAsBoolean, useQueryState } from 'nuqs';
-import { useMemo } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -31,6 +30,8 @@ import api from '~/services/api';
 
 type InviteDialogProps = {
   invite?: Invite;
+  trigger: ReactNode;
+  onClose?: () => void;
 };
 
 const FormSchema = z.object({
@@ -44,14 +45,18 @@ const FormSchema = z.object({
 
 type FormType = z.infer<typeof FormSchema>;
 
-function InviteDialog({ invite }: InviteDialogProps) {
+function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
   const isEditMode = !!invite;
 
   const queryClient = useQueryClient();
-  const [isModalOpen, setIsModalOpen] = useQueryState(
-    'invite-modal',
-    parseAsBoolean,
-  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleClose() {
+    setIsModalOpen(false);
+    setTimeout(() => {
+      onClose?.();
+    }, 300);
+  }
 
   const values = useMemo(() => {
     if (invite) {
@@ -101,7 +106,7 @@ function InviteDialog({ invite }: InviteDialogProps) {
       });
 
       toast.success('Convite criado com sucesso!');
-      setIsModalOpen(false);
+      handleClose();
     },
     onError: (err) => {
       console.log(err);
@@ -117,7 +122,7 @@ function InviteDialog({ invite }: InviteDialogProps) {
     <Dialog
       onOpenChange={(isOpening) => {
         if (!isOpening) {
-          setIsModalOpen(false);
+          handleClose();
           form.reset();
         }
       }}
@@ -129,7 +134,7 @@ function InviteDialog({ invite }: InviteDialogProps) {
           setIsModalOpen(true);
         }}
       >
-        <Button>Adicionar</Button>
+        {trigger}
       </DialogTrigger>
 
       <DialogContent>
