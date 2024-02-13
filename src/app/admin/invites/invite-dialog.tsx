@@ -8,6 +8,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { Button } from '~/components/ui/button';
+import { Checkbox } from '~/components/ui/checkbox';
 import {
   Dialog,
   DialogContent,
@@ -35,10 +36,13 @@ type InviteDialogProps = {
 };
 
 const FormSchema = z.object({
+  id: z.string().optional().nullable(),
   alias: z.string().min(1, 'Preencha o apelido do convite'),
   guests: z.array(
     z.object({
+      id: z.string().optional().nullable(),
       name: z.string().min(1, 'Preencha o nome do convidado'),
+      willBePresent: z.boolean().optional().default(false),
     }),
   ),
 });
@@ -61,10 +65,13 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
   const values = useMemo(() => {
     if (invite) {
       return {
+        id: invite.id,
         alias: invite.alias,
-        guests: invite?.Guest?.map((guest) => ({ name: guest.name })) ?? [
-          { name: '' },
-        ],
+        guests: invite?.Guest?.map((guest) => ({
+          id: guest.id,
+          name: guest.name,
+          willBePresent: guest.willBePresent ?? false,
+        })) ?? [{ name: '', willBePresent: false }],
       };
     }
     return {
@@ -72,6 +79,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
       guests: [
         {
           name: '',
+          willBePresent: false,
         },
       ],
     };
@@ -89,13 +97,15 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
 
   const { mutate: createInvite, isPending: isCreatingInvite } = useMutation({
     mutationFn: (values: FormType) => {
-      if (isEditMode) {
-        return api.put('/invite');
-      }
-      return api.post<Invite>('/invite', {
+      const body = {
+        id: values.id,
         alias: values.alias,
         guests: values.guests,
-      });
+      };
+      if (isEditMode) {
+        return api.put(`/invite/${values.id}`, body);
+      }
+      return api.post<Invite>('/invite', body);
     },
     onSuccess: (response) => {
       const invite = response.data;
@@ -147,21 +157,6 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
           </DialogDescription>
         </DialogHeader>
 
-        {!!invite?.Guest?.length && (
-          <div className="mt-4 space-y-4">
-            <span className="text-xl">Convidados</span>
-            {invite?.Guest?.map((guest) => (
-              <div className="flex items-center justify-between" key={guest.id}>
-                <span>{guest.name}</span>
-
-                <Button variant="destructive" size="sm">
-                  <Trash size={15} />
-                </Button>
-              </div>
-            ))}
-          </div>
-        )}
-
         <Form {...form}>
           <div className="space-y-4">
             <FormField
@@ -179,31 +174,47 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
             />
 
             {guestsFieldArray.fields.map((guestField, index) => (
-              <FormField
-                key={guestField.id}
-                name={`guests.${index}.name`}
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Convidado {index + 1}</FormLabel>
-                    <FormControl>
-                      <div className="flex items-center gap-2">
-                        <Input placeholder="Nome do convidado" {...field} />
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={() => {
-                            guestsFieldArray.remove(index);
-                          }}
-                        >
-                          <Trash size={15} />
-                        </Button>
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div key={guestField.id}>
+                <FormField
+                  name={`guests.${index}.name`}
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Convidado {index + 1}</FormLabel>
+                      <FormControl>
+                        <div className="flex items-center gap-2">
+                          <Input placeholder="Nome do convidado" {...field} />
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={() => {
+                              guestsFieldArray.remove(index);
+                            }}
+                          >
+                            <Trash size={15} />
+                          </Button>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  name={`guests.${index}.willBePresent`}
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem className="flex items-center mt-4 gap-2">
+                      <FormControl className="m-0 p-0">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormLabel className="!mt-0">Estará presente ?</FormLabel>
+                    </FormItem>
+                  )}
+                />
+              </div>
             ))}
           </div>
         </Form>
@@ -214,6 +225,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
             onClick={() => {
               guestsFieldArray.append({
                 name: '',
+                willBePresent: false,
               });
             }}
           >
