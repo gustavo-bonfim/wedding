@@ -2,7 +2,8 @@
 
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-import { Edit } from 'lucide-react';
+import { Edit, Search } from 'lucide-react';
+import { useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { Button } from '~/components/ui/button';
 import {
@@ -12,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card';
+import { Input } from '~/components/ui/input';
 import { Invite } from '~/models/Invite';
 import api from '~/services/api';
 import InviteDialog from './invite-dialog';
@@ -28,18 +30,36 @@ function InviteList() {
     queryFn: getInvites,
   });
 
+  const [search, setSearch] = useQueryState('q');
+
   const [selectedInvite, setSelectedInvite] = useState<Invite>();
+
+  const filteredInvites = invites?.filter((invite) =>
+    new RegExp(search ?? '', 'ig').test(invite.alias),
+  );
 
   if (!invites) return null;
 
   return (
     <>
+      <div className="mt-4 flex items-center gap-4">
+        <span className="text-xl">Filtrar</span>
+        <div className="mt-2 flex w-[300px] items-center rounded-full border border-foreground px-4">
+          <Search size={15} />
+          <Input
+            value={search ?? ''}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Buscar convidados"
+          />
+        </div>
+      </div>
+
       <div className="mt-6 grid grid-cols-3 gap-4">
-        {invites.map((invite) => (
+        {filteredInvites?.map((invite) => (
           <Card key={invite.id}>
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
-                <span>Convite {invite.id}</span>
+                <span>{invite.alias}</span>
                 <InviteDialog
                   invite={selectedInvite}
                   onClose={() => {
