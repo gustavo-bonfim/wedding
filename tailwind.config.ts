@@ -21,8 +21,10 @@ const config = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
+        burgues: 'var(--font-burgues)',
       },
       colors: {
+        wedding: 'var(--wedding)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

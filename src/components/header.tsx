@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import Image from 'next/image';
+import Logo from './logo';
 import { Button } from './ui/button';
 
 function Header() {
@@ -18,13 +18,7 @@ function Header() {
 
   return (
     <header className="flex w-full items-center justify-between">
-      <Image
-        src="https://github.com/GustavoBonfimS.png"
-        width={84}
-        height={64}
-        alt="logo"
-        className="h-16 w-16"
-      />
+      <Logo />
       <div>
         <Button variant="outline" onClick={toggleTheme}>
           {resolvedTheme === 'light' ? (
