@@ -79,6 +79,11 @@ function InviteList() {
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4 divide-y">
+              {!invite.Guest?.length && (
+                <span className="font-light text-slate-800 italic">
+                  Nenhum convidado adicionado a este convite
+                </span>
+              )}
               {invite.Guest?.map((guest) => (
                 <span key={guest.id}>{guest.name}</span>
               ))}
