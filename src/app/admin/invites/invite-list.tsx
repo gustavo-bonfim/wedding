@@ -56,7 +56,7 @@ function InviteList() {
 
       <div className="mt-6 grid grid-cols-3 gap-4">
         {filteredInvites?.map((invite) => (
-          <Card key={invite.id}>
+          <Card key={invite.id} className="hover:ring-1 hover:ring-foreground">
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 <span>{invite.alias}</span>

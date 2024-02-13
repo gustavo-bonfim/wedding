@@ -203,7 +203,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
                   name={`guests.${index}.willBePresent`}
                   control={form.control}
                   render={({ field }) => (
-                    <FormItem className="flex items-center mt-4 gap-2">
+                    <FormItem className="mt-4 flex items-center gap-2">
                       <FormControl className="m-0 p-0">
                         <Checkbox
                           checked={field.value}
