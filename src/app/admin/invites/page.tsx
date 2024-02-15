@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Button } from '~/components/ui/button';
 import InviteDialog from './invite-dialog';
 import InviteList from './invite-list';
@@ -14,7 +15,9 @@ async function Invites() {
         Lista de convites adicionados
       </h2>
 
-      <InviteList />
+      <Suspense fallback={<span>loading</span>}>
+        <InviteList />
+      </Suspense>
     </div>
   );
 }
