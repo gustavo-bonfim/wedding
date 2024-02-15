@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { Edit, Search } from 'lucide-react';
 import { useQueryState } from 'nuqs';
 import { useState } from 'react';
+import InviteQRCode from '~/components/invite-qr-code';
 import { Button } from '~/components/ui/button';
 import {
   Card,
@@ -49,7 +50,7 @@ function InviteList() {
           <Input
             value={search ?? ''}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar convidados"
+            placeholder="Buscar convites"
           />
         </div>
       </div>
@@ -89,9 +90,10 @@ function InviteList() {
               ))}
             </CardContent>
             <CardFooter>
-              <span className="ml-auto">
-                Criado em {dayjs(invite.createdAt).format('L LT')}
-              </span>
+              <div className="w-full flex flex-col items-end gap-4">
+                <span>Criado em {dayjs(invite.createdAt).format('L LT')}</span>
+                <InviteQRCode inviteId={invite.id} />
+              </div>
             </CardFooter>
           </Card>
         ))}
