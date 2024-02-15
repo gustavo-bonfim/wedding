@@ -22,8 +22,11 @@ const config = {
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
         burgues: 'var(--font-burgues)',
+        doulaise: 'var(--font-doulaise)',
       },
       colors: {
+        gold: '#908d77',
+        paper: 'hsl(var(--paper))',
         wedding: 'var(--wedding)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

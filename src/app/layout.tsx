@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Monsieur_La_Doulaise } from 'next/font/google';
 import LocalFont from 'next/font/local';
 import { Toaster } from '~/components/ui/sonner';
 
@@ -10,6 +10,11 @@ const BurguesFont = LocalFont({
   variable: '--font-burgues',
 });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const doulaise = Monsieur_La_Doulaise({
+  subsets: ['latin'],
+  variable: '--font-doulaise',
+  weight: '400',
+});
 
 export const metadata: Metadata = {
   title: 'Wedding',
@@ -24,7 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt" className={`${inter.variable} ${BurguesFont.variable}`}>
+    <html
+      lang="pt"
+      className={`${inter.variable} ${BurguesFont.variable} ${doulaise.variable}`}
+    >
       <body>
         <Providers>
           <div className="container mx-auto min-h-screen space-y-6 p-4 antialiased">
