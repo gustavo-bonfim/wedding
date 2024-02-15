@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --wedding: #608c57;
-    --paper: 60, 100%, 97%;
+    --paper: 0, 0%, 98%;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
