@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Monsieur_La_Doulaise } from 'next/font/google';
+import { Inter, Monsieur_La_Doulaise, Unna } from 'next/font/google';
 import LocalFont from 'next/font/local';
 import { Toaster } from '~/components/ui/sonner';
 
@@ -14,6 +14,11 @@ const doulaise = Monsieur_La_Doulaise({
   subsets: ['latin'],
   variable: '--font-doulaise',
   weight: '400',
+});
+const unna = Unna({
+  subsets: ['latin'],
+  variable: '--font-unna',
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt"
-      className={`${inter.variable} ${BurguesFont.variable} ${doulaise.variable}`}
+      className={`${inter.variable} ${BurguesFont.variable} ${doulaise.variable} ${unna.variable}`}
     >
       <body>
         <Providers>

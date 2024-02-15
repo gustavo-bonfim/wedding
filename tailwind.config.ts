@@ -23,6 +23,7 @@ const config = {
         sans: ['var(--font-inter)', ...fontFamily.sans],
         burgues: 'var(--font-burgues)',
         doulaise: 'var(--font-doulaise)',
+        unna: 'var(--font-unna)',
       },
       colors: {
         gold: '#908d77',
