@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className="flex w-full items-center justify-between">
       <Logo />
-      <ul className="flex gap-5 font-unna text-gold uppercase">
+      <ul className="flex gap-5 uppercase">
         <li>
           <a className="hover:underline hover:opacity-70" href="/">
             Confirmar Presença

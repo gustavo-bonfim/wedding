@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import QRCode from 'react-qr-code';
-import { useReactToPrint } from 'react-to-print';
+// import { useReactToPrint } from 'react-to-print';
 import { Button } from './ui/button';
 
 type InviteQRCodeProps = {

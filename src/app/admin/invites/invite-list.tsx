@@ -90,7 +90,7 @@ function InviteList() {
               ))}
             </CardContent>
             <CardFooter>
-              <div className="w-full flex flex-col items-end gap-4">
+              <div className="flex w-full flex-col items-end gap-4">
                 <span>Criado em {dayjs(invite.createdAt).format('L LT')}</span>
                 <InviteQRCode inviteId={invite.id} />
               </div>

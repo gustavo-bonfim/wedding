@@ -20,7 +20,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', ...fontFamily.sans],
+        sans: ['var(--font-unna)', ...fontFamily.sans],
         burgues: 'var(--font-burgues)',
         doulaise: 'var(--font-doulaise)',
         unna: 'var(--font-unna)',

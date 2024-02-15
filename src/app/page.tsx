@@ -1,13 +1,17 @@
 'use client';
 
+import Countdown from '~/components/countdown';
+
 function Home() {
   return (
-    <div>
-      <section className="mx-auto w-[350px] h-96 flex flex-col justify-center font-burgues text-6xl text-gold">
+    <div className="flex flex-col items-center">
+      <section className="flex h-96 w-[350px] flex-col justify-center font-burgues text-6xl text-gold">
         <p>Kethelyn</p>
-        <span className="font-doulaise self-center">&</span>
+        <span className="self-center font-doulaise">&</span>
         <p className="self-end">Gustavo</p>
       </section>
+
+      <Countdown />
     </div>
   );
 }

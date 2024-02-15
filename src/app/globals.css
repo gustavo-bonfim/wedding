@@ -73,6 +73,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-paper text-foreground;
+    @apply bg-paper text-gold;
   }
 }
