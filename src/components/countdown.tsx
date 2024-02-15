@@ -3,16 +3,22 @@
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 
+function calculateDiff() {
+  const weddingDate = dayjs('2025-06-17T17:00:00-03:00');
+  const now = dayjs();
+
+  return weddingDate.diff(now);
+}
+
 function Countdown() {
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(() => calculateDiff());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const weddingDate = dayjs('2025-06-17T17:00:00-03:00');
-      const now = dayjs();
-
-      setTimeLeft(weddingDate.diff(now));
-    }, 1000);
+      if (window) {
+        setTimeLeft(calculateDiff());
+      }
+    }, 1000 * 60);
 
     return () => {
       clearInterval(interval);
