@@ -6,8 +6,8 @@
   :root {
     --wedding: #608c57;
     --paper: 0, 0%, 98%;
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0, 0%, 98%;
+    --foreground: 110 23% 45%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -73,6 +73,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-paper text-gold;
+    @apply bg-background text-foreground;
   }
 }
