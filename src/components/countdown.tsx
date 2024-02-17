@@ -39,25 +39,25 @@ function Countdown() {
 
   return (
     <section className="grid grid-cols-2 gap-4 md:grid-cols-5">
-      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 ring-1 ring-foreground shadow-lg">
+      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
         <span>{years}</span>
         <span>anos</span>
       </div>
-      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 ring-1 ring-foreground shadow-lg">
+      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
         <span>{months}</span>
         <span>meses</span>
       </div>
-      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 ring-1 ring-foreground shadow-lg">
+      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
         <span>
           <span>{days}</span>
         </span>
         <span>dias</span>
       </div>
-      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 ring-1 ring-foreground shadow-lg">
+      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
         <span>{hours}</span>
         <span>horas</span>
       </div>
-      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 ring-1 ring-foreground shadow-lg">
+      <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
         <span>{minutes}</span>
         <span>minutos</span>
       </div>
