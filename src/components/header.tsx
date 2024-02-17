@@ -4,7 +4,7 @@ import Logo from './logo';
 
 function Header() {
   return (
-    <header className="flex w-full items-center justify-between">
+    <header className="invisible flex h-[60px] w-full items-center justify-between md:visible">
       <Logo />
       <ul className="invisible flex gap-5 uppercase md:visible">
         <li>
