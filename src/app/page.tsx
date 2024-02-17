@@ -5,7 +5,7 @@ import Countdown from '~/components/countdown';
 function Home() {
   return (
     <div className="flex flex-col items-center">
-      <section className="flex h-80 w-[350px] flex-col items-center justify-center font-burgues text-7xl leading-[0.6]">
+      <section className="flex h-80 w-[350px] select-none flex-col items-center justify-center font-burgues text-7xl leading-[0.6]">
         <span>Kethelyn</span>
         <span className="text-6xl">e</span>
         <span>Gustavo</span>
