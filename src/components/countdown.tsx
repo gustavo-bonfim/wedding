@@ -1,7 +1,10 @@
 'use client';
 
 import dayjs from 'dayjs';
+import pluralize from 'pluralize';
 import { useEffect, useState } from 'react';
+
+pluralize.addPluralRule(/es/i, 'eses');
 
 function calculateDiff() {
   const weddingDate = dayjs('2025-06-17T17:00:00-03:00');
@@ -42,13 +45,13 @@ function Countdown() {
       {years > 0 && (
         <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
           <span>{years}</span>
-          <span>ano</span>
+          <span>{pluralize('ano', years)}</span>
         </div>
       )}
       {months > 0 && (
         <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
           <span>{months}</span>
-          <span>meses</span>
+          <span>{pluralize('mes', months)}</span>
         </div>
       )}
       {days > 0 && (
@@ -56,19 +59,19 @@ function Countdown() {
           <span>
             <span>{days}</span>
           </span>
-          <span>dias</span>
+          <span>{pluralize('dia', days)}</span>
         </div>
       )}
       {hours > 0 && (
         <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
           <span>{hours}</span>
-          <span>horas</span>
+          <span>{pluralize('hora', hours)}</span>
         </div>
       )}
       {minutes > 0 && (
         <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
           <span>{minutes}</span>
-          <span>minutos</span>
+          <span>{pluralize('minuto', minutes)}</span>
         </div>
       )}
     </section>

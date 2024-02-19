@@ -26,6 +26,7 @@
     "next": "14.1.0",
     "next-themes": "^0.2.1",
     "nuqs": "^1.16.1",
+    "pluralize": "^8.0.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
