@@ -1,6 +1,7 @@
 'use client';
 
 import Countdown from '~/components/countdown';
+import SectionContent from '~/components/section-content';
 import SectionTitle from '~/components/section-title';
 
 function Home() {
@@ -30,7 +31,7 @@ function Home() {
 
       <SectionTitle>Lista de presentes</SectionTitle>
 
-      <div className="mt-6 mb-12 max-w-[800px] text-xl">
+      <SectionContent>
         <p>
           Mais do que qualquer presente material, o que realmente valorizamos é
           ter vocês ao nosso lado enquanto embarcamos nesta nova fase de nossas
@@ -40,7 +41,19 @@ function Home() {
           Se você gostaria de nos presentear, por favor, sinta-se à vontade para
           explorar nossa lista de presentes através do link fornecido abaixo.
         </p>
-      </div>
+      </SectionContent>
+
+      <SectionContent>
+        <p>
+          Mais do que qualquer presente material, o que realmente valorizamos é
+          ter vocês ao nosso lado enquanto embarcamos nesta nova fase de nossas
+          vidas.
+        </p>
+        <p>
+          Se você gostaria de nos presentear, por favor, sinta-se à vontade para
+          explorar nossa lista de presentes através do link fornecido abaixo.
+        </p>
+      </SectionContent>
     </div>
   );
 }
