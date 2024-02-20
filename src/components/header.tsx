@@ -13,7 +13,7 @@ function Header() {
           </a>
         </li>
         <li>
-          <a className="hover:underline hover:opacity-70" href="/">
+          <a className="hover:underline hover:opacity-70" href="#presentes">
             Lista de Presentes
           </a>
         </li>

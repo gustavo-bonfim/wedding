@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt"
-      className={`${inter.variable} ${BurguesFont.variable} ${doulaise.variable} ${unna.variable}`}
+      className={`${inter.variable} ${BurguesFont.variable} ${doulaise.variable} ${unna.variable} scroll-smooth`}
     >
       <body>
         <Providers>
