@@ -15,15 +15,9 @@ import {
   CardTitle,
 } from '~/components/ui/card';
 import { Input } from '~/components/ui/input';
+import { getInvites } from '~/data/get-invites';
 import { Invite } from '~/models/Invite';
-import api from '~/services/api';
 import InviteDialog from './invite-dialog';
-
-async function getInvites() {
-  const { data } = await api.get<Invite[]>('/invite');
-
-  return data ?? [];
-}
 
 function InviteList() {
   const { data: invites } = useQuery({
