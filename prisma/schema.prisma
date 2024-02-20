@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Invite {
+  id             String    @id @default(cuid())
+  alias          String
+  createdAt      DateTime  @default(now()) @map("created_at")
+  firstVisitedAt DateTime? @map("first_visited_at")
+
+  Guest Guest[]
+}
+
+model Guest {
+  id            String  @id @default(cuid())
+  name          String
+  willBePresent Boolean @default(false)
+  inviteId      String
+
+  invite Invite @relation(fields: [inviteId], references: [id])
+}
