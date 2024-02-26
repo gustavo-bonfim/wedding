@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "npx prisma generate && next build",
     "start": "next start",
-    "lint": "yarn biome check ./src",
-    "lint:fix": "yarn biome check ./src --apply-unsafe"
+    "lint": "npx biome check ./src",
+    "lint:fix": "npx biome check ./src --apply-unsafe"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

@@ -26,7 +26,6 @@ export const metadata: Metadata = {
 };
 
 import Providers from './providers';
-import Head from 'next/head';
 
 export default function RootLayout({
   children,
