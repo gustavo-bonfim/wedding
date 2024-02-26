@@ -25,7 +25,6 @@ export const metadata: Metadata = {
   title: 'Wedding',
 };
 
-import Header from '~/components/header';
 import Providers from './providers';
 
 export default function RootLayout({
@@ -41,7 +40,6 @@ export default function RootLayout({
       <body>
         <Providers>
           <div className="container mx-auto min-h-screen space-y-6 p-4 antialiased">
-            <Header />
             <main>{children}</main>
           </div>
         </Providers>
