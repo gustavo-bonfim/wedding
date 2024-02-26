@@ -42,6 +42,9 @@ function Home() {
             para explorar nossa lista de presentes através do link fornecido
             abaixo.
           </p>
+          <button className='bg-wedding text-white px-4 py-2 rounded-md flex mx-auto mt-4 hover:bg-transparent hover:border hover:border-wedding hover:text-wedding transition'>
+            <a href="https://lista.havan.com.br/Convidado/ItensListaPresente/734798" target='_blank'>Ver lista de presentes</a>
+            </button>
         </SectionContent>
       </div>
     </>

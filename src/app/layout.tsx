@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 import Providers from './providers';
+import Head from 'next/head';
 
 export default function RootLayout({
   children,
@@ -37,6 +38,9 @@ export default function RootLayout({
       lang="pt"
       className={`${inter.variable} ${BurguesFont.variable} ${doulaise.variable} ${unna.variable} scroll-smooth`}
     >
+      <head>
+        <title>Casamento K&G</title>
+      </head>
       <body>
         <Providers>
           <div className="container mx-auto min-h-screen space-y-6 p-4 antialiased">
