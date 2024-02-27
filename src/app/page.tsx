@@ -13,7 +13,7 @@ function Home() {
     <>
       <Header />
       <div className="flex flex-col items-center">
-        <section className="flex min-h-[calc(100dvh-70px)] w-full flex-col items-center">
+        <section className="flex h-[calc(100dvh-70px)] w-full flex-col items-center justify-center">
           <MainLogo />
 
           <SectionTitle>07/06/2025</SectionTitle>
@@ -44,12 +44,7 @@ function Home() {
             para explorar nossa lista de presentes através do link fornecido
             abaixo.
           </p>
-          <Button
-            variant="outline"
-            size="lg"
-            type="button"
-            className="mx-auto mt-4 flex text-lg"
-          >
+          <Button variant="outline" type="button" className="mx-auto mt-4 flex">
             <a
               href="https://lista.havan.com.br/Convidado/ItensListaPresente/734798"
               target="_blank"
