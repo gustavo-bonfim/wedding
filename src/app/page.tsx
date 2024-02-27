@@ -55,6 +55,26 @@ function Home() {
             </a>
           </button>
         </SectionContent>
+        <SectionTitle id="location">Como chegar:</SectionTitle>
+        <SectionContent>
+          <div className="flex justify-between">
+            <div>
+              <p>
+                Chacara Lighting Decor Tv. <br />
+                Chiquinha Gonzaga, 246 - Chácaras <br />
+                Califórnia, Araçatuba - SP, 16023
+              </p>
+            </div>
+            <div>
+              <iframe
+                className="rounded-md border border-wedding"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.371590288143!2d-50.480062525810446!3d-21.217108579674612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94964370ac46c477%3A0xb510cb82c579579!2sChacara%20Lighting%20Decor!5e0!3m2!1spt-BR!2sbr!4v1709042664315!5m2!1spt-BR!2sbr"
+              >
+                {''}
+              </iframe>
+            </div>
+          </div>
+        </SectionContent>
       </div>
     </>
   );
