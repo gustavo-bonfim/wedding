@@ -11,7 +11,10 @@ function FadeDiv({ children, ...rest }: Props) {
       whileInView={{ opacity: 1 }}
       transition={{
         ease: 'linear',
-        duration: 2,
+        duration: 1,
+      }}
+      viewport={{
+        once: true,
       }}
       {...rest}
     >
