@@ -69,7 +69,7 @@ function Countdown() {
         </div>
       )}
       {minutes > 0 && (
-        <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
+        <div className="col-span-2 flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground lg:col-span-1">
           <span>{minutes}</span>
           <span>{pluralize('minuto', minutes)}</span>
         </div>
