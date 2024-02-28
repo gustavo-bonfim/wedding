@@ -18,7 +18,7 @@ function Header() {
           </a>
         </li>
         <li>
-          <a className="hover:underline hover:opacity-70" href="/">
+          <a className="hover:underline hover:opacity-70" href="#location">
             Como Chegar
           </a>
         </li>
