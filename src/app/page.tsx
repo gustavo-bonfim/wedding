@@ -14,7 +14,7 @@ function Home() {
         <Header />
       </FadeDiv>
       <div className="flex flex-col items-center">
-        <FadeDiv className="flex h-[calc(100dvh-70px)] w-full flex-col items-center justify-center">
+        <FadeDiv className="flex lg:h-[100dvh] w-full flex-col items-center justify-center">
           <MainLogo />
 
           <SectionTitle>07/06/2025</SectionTitle>
