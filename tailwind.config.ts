@@ -26,7 +26,7 @@ const config = {
         unna: 'var(--font-unna)',
       },
       colors: {
-        gold: '#908d77',
+        gold: 'var(--gold)',
         paper: 'hsl(var(--paper))',
         wedding: 'var(--wedding)',
         border: 'hsl(var(--border))',

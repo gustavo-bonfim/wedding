@@ -1,13 +1,29 @@
-import { ComponentProps } from 'react';
+'use client';
 
-function SectionContent({ children, ...props }: ComponentProps<'div'>) {
+import { HTMLMotionProps, motion } from 'framer-motion';
+import { cn } from '~/lib/utils';
+
+function SectionContent({
+  children,
+  className,
+  ...props
+}: HTMLMotionProps<'div'>) {
   return (
-    <div
-      className="mt-6 mb-12 w-full max-w-[800px] text-xl lg:mb-20"
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{
+        ease: 'linear',
+        duration: 1,
+      }}
+      viewport={{
+        once: true,
+      }}
+      className={cn('w-full max-w-[800px] text-xl', className)}
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 

@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --wedding: #608c57;
+    --gold: #908d77;
     --paper: 0, 0%, 98%;
     --background: 0, 0%, 98%;
     --foreground: 110 23% 45%;
@@ -73,6 +74,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-gold;
   }
 }
