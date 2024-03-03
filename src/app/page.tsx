@@ -71,8 +71,14 @@ function Home() {
                 Chácaras Califórnia, <br />
                 Araçatuba - SP <br />
               </div>
-              <Button className="flex gap-2 lg:hidden">
-                Abrir no mapa <MapPin size={20} />
+              <Button className="flex gap-2 lg:hidden" type="button" asChild>
+                <a
+                  href="https://maps.app.goo.gl/dSJ4BSPfgoqzbWYJA"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Abrir no mapa <MapPin size={20} />
+                </a>
               </Button>
             </div>
             <iframe
