@@ -11,9 +11,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from '~/components/ui/form';
-import { Input } from '~/components/ui/input';
 
 const guests = [
   {
@@ -28,8 +26,16 @@ const guests = [
   },
 ];
 
+const invite = {
+  id: 'akldfjaslj-sadiofj',
+  alias: 'Familia',
+  guests: guests,
+};
+
 function PresenceForm() {
   const formSchema = z.object({
+    id: z.string(),
+    alias: z.string(),
     guests: z.array(
       z.object({
         id: z.string().optional().nullable(),
@@ -43,15 +49,19 @@ function PresenceForm() {
 
   const form = useForm<FormValues>({
     values: {
-      guests: [],
+      ...invite,
     },
     resolver: zodResolver(formSchema),
   });
 
+  function handleSubmit(values: FormValues) {
+    console.log(values);
+  }
+
   return (
     <div>
       <Form {...form}>
-        <div className="space-y-4">
+        <form className="space-y-4" onSubmit={form.handleSubmit(handleSubmit)}>
           {guests.map((guest, index) => (
             <div key={guest.id}>
               <FormLabel className="text-wedding">{guest.name}</FormLabel>
@@ -72,8 +82,10 @@ function PresenceForm() {
               />
             </div>
           ))}
-          <Button className="flex mx-auto">Confirmar</Button>
-        </div>
+          <Button type="submit" className="flex mx-auto">
+            Confirmar
+          </Button>
+        </form>
       </Form>
     </div>
   );

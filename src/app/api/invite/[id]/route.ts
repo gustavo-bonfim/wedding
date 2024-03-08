@@ -73,6 +73,9 @@ export async function GET(_, { params }: RouteContext) {
     where: {
       id: params.id,
     },
+    include: {
+      Guest: true,
+    },
   });
 
   if (!invite) {
