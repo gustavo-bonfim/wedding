@@ -6,6 +6,7 @@ import MainLogo from '~/components/main-logo';
 import SectionContent from '~/components/section-content';
 import SectionTitle from '~/components/section-title';
 import { Button } from '~/components/ui/button';
+import PresenceForm from './presence-form';
 
 function Home() {
   return (
@@ -13,7 +14,7 @@ function Home() {
       <FadeDiv>
         <Header />
       </FadeDiv>
-      <div className="flex flex-col items-center gap-16">
+      <div className="flex flex-col items-center gap-16 pb-12">
         <FadeDiv className="flex w-full flex-col items-center justify-center">
           <MainLogo />
 
@@ -87,6 +88,17 @@ function Home() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.371590288143!2d-50.480062525810446!3d-21.217108579674612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94964370ac46c477%3A0xb510cb82c579579!2sChacara%20Lighting%20Decor!5e0!3m2!1spt-BR!2sbr!4v1709042664315!5m2!1spt-BR!2sbr"
             />
           </div>
+        </SectionContent>
+
+        <SectionContent>
+          <SectionTitle>Marcar presença</SectionTitle>
+
+          <PresenceForm />
+
+          <p className="font-semibold mt-8 opacity-60 italic">
+            * Os convites são enviados por famílias, se achar que esta faltando
+            alguém, por favor, nos avise!
+          </p>
         </SectionContent>
       </div>
     </>
