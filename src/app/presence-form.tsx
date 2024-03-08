@@ -1,6 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useQuery } from '@tanstack/react-query';
+import { useQueryState } from 'nuqs';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '~/components/ui/button';
@@ -12,27 +14,17 @@ import {
   FormItem,
   FormLabel,
 } from '~/components/ui/form';
-
-const guests = [
-  {
-    id: '1',
-    name: 'Gustavo Henrique Bonfim Dos Santos',
-    willBePresent: false,
-  },
-  {
-    id: '2',
-    name: 'Otávio',
-    willBePresent: true,
-  },
-];
-
-const invite = {
-  id: 'akldfjaslj-sadiofj',
-  alias: 'Familia',
-  guests: guests,
-};
+import { getInviteById } from '~/data/get-invites';
 
 function PresenceForm() {
+  const [inviteId] = useQueryState('i');
+
+  const { data: invite } = useQuery({
+    queryKey: ['invite', inviteId],
+    queryFn: () => getInviteById(inviteId),
+    enabled: !!inviteId,
+  });
+
   const formSchema = z.object({
     id: z.string(),
     alias: z.string(),
@@ -49,7 +41,9 @@ function PresenceForm() {
 
   const form = useForm<FormValues>({
     values: {
-      ...invite,
+      id: invite?.id ?? '',
+      alias: invite?.alias ?? '',
+      guests: invite?.guests ?? [],
     },
     resolver: zodResolver(formSchema),
   });
@@ -62,7 +56,7 @@ function PresenceForm() {
     <div>
       <Form {...form}>
         <form className="space-y-4" onSubmit={form.handleSubmit(handleSubmit)}>
-          {guests.map((guest, index) => (
+          {invite?.guests?.map((guest, index) => (
             <div key={guest.id}>
               <FormLabel className="text-wedding">{guest.name}</FormLabel>
               <FormField

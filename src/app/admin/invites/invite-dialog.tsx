@@ -150,7 +150,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-2xl">
-            {isEditMode ? 'Editar convite' : 'Novo convite'}
+            {isEditMode ? 'Editar convite' : 'Novo convite'} - {invite?.id}
           </DialogTitle>
           <DialogDescription>
             Preencha os campos para adicionar convidados a este convite

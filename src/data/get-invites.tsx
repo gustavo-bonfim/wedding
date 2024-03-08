@@ -7,12 +7,8 @@ export async function getInvites() {
   return data ?? [];
 }
 
-export async function getInviteById(inviteId: string) {
-  const { data } = await api.get<Invite>('/invite/id', {
-    params: {
-      id: inviteId,
-    },
-  });
+export async function getInviteById(inviteId: string | null) {
+  const { data } = await api.get<Invite>(`/invite/${inviteId}`);
 
   return data ?? [];
 }
