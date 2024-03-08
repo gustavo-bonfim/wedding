@@ -6,5 +6,5 @@ export interface Invite {
   createdAt: string;
   firstVisitedAt: string | null;
 
-  Guest?: Guest[];
+  guests?: Guest[];
 }

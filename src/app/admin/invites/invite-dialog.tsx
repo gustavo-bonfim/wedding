@@ -67,7 +67,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
       return {
         id: invite.id,
         alias: invite.alias,
-        guests: invite?.Guest?.map((guest) => ({
+        guests: invite?.guests?.map((guest) => ({
           id: guest.id,
           name: guest.name,
           willBePresent: guest.willBePresent ?? false,

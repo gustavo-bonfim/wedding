@@ -23,7 +23,7 @@ export async function PUT(request: Request, { params }: RouteContext) {
       id: params.id,
     },
     include: {
-      Guest: true,
+      guests: true,
     },
   });
 
@@ -36,7 +36,7 @@ export async function PUT(request: Request, { params }: RouteContext) {
     );
   }
 
-  const guestsToDelete = inviteExists.Guest.filter(
+  const guestsToDelete = inviteExists.guests.filter(
     (guest) => !body.guests.find((g) => g.id === guest.id),
   );
   const guestsToCreate = body.guests.filter((guest) => !guest.id);
@@ -48,7 +48,7 @@ export async function PUT(request: Request, { params }: RouteContext) {
     },
     data: {
       alias: body.alias,
-      Guest: {
+      guests: {
         deleteMany: guestsToDelete,
         create: guestsToCreate,
         update: guestsToUpdate.map((guest) => ({
@@ -60,7 +60,7 @@ export async function PUT(request: Request, { params }: RouteContext) {
       },
     },
     include: {
-      Guest: true,
+      guests: true,
     },
   });
 
@@ -74,7 +74,7 @@ export async function GET(_, { params }: RouteContext) {
       id: params.id,
     },
     include: {
-      Guest: true,
+      guests: true,
     },
   });
 
