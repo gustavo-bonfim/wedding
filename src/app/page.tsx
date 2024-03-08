@@ -1,4 +1,5 @@
 import { MapPin } from 'lucide-react';
+import { Suspense } from 'react';
 import Countdown from '~/components/countdown';
 import FadeDiv from '~/components/fade-div';
 import Header from '~/components/header';
@@ -93,7 +94,9 @@ function Home() {
         <SectionContent id="presence">
           <SectionTitle>Confirmar presença</SectionTitle>
 
-          <PresenceForm />
+          <Suspense>
+            <PresenceForm />
+          </Suspense>
         </SectionContent>
       </div>
     </>
