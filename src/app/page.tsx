@@ -90,15 +90,10 @@ function Home() {
           </div>
         </SectionContent>
 
-        <SectionContent>
-          <SectionTitle>Marcar presença</SectionTitle>
+        <SectionContent id="presence">
+          <SectionTitle>Confirmar presença</SectionTitle>
 
           <PresenceForm />
-
-          <p className="font-semibold mt-8 opacity-60 italic">
-            * Os convites são enviados por famílias, se achar que esta faltando
-            alguém, por favor, nos avise!
-          </p>
         </SectionContent>
       </div>
     </>

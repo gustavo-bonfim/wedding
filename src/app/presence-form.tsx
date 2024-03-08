@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQuery } from '@tanstack/react-query';
+import { Loader } from 'lucide-react';
 import { useQueryState } from 'nuqs';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -19,7 +20,7 @@ import { getInviteById } from '~/data/get-invites';
 function PresenceForm() {
   const [inviteId] = useQueryState('i');
 
-  const { data: invite } = useQuery({
+  const { data: invite, isLoading } = useQuery({
     queryKey: ['invite', inviteId],
     queryFn: () => getInviteById(inviteId),
     enabled: !!inviteId,
@@ -52,6 +53,26 @@ function PresenceForm() {
     console.log(values);
   }
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center gap-2">
+        <Loader className="h-4 w-4 animate-spin" />
+        <span>Carregando informações do convite</span>
+      </div>
+    );
+  }
+
+  if (!invite) {
+    return (
+      <div>
+        <span className="text-center font-semibold text-xl">
+          Para confirmar presença por favor, escaneie o código QR no convite que
+          você recebeu
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Form {...form}>
@@ -76,11 +97,16 @@ function PresenceForm() {
               />
             </div>
           ))}
-          <Button type="submit" className="flex mx-auto">
+          <Button type="submit" className="mx-auto flex">
             Confirmar
           </Button>
         </form>
       </Form>
+
+      <p className="mt-8 font-semibold italic opacity-60">
+        * Os convites são enviados por famílias, se achar que esta faltando
+        alguém, por favor, nos avise!
+      </p>
     </div>
   );
 }
