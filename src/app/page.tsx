@@ -15,7 +15,7 @@ function Home() {
       <FadeDiv>
         <Header />
       </FadeDiv>
-      <div className="flex flex-col items-center gap-12 md:gap-16 pb-12">
+      <div className="flex flex-col items-center gap-12 pb-12 md:gap-16">
         <FadeDiv className="flex w-full flex-col items-center justify-center">
           <MainLogo />
 
