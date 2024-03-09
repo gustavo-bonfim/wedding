@@ -77,7 +77,7 @@ function InviteList() {
                 />
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col gap-4 divide-y flex-1">
+            <CardContent className="flex-1 flex flex-col gap-4 divide-y">
               {!invite.guests?.length && (
                 <span className="font-light text-slate-800 italic">
                   Nenhum convidado adicionado a este convite
