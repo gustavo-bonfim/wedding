@@ -15,9 +15,10 @@ import {
   CardTitle,
 } from '~/components/ui/card';
 import { Input } from '~/components/ui/input';
-import { getInvites } from '~/data/get-invites';
+import { getInvites } from '~/data/invite-data';
 import { Invite } from '~/models/Invite';
 import InviteDialog from './invite-dialog';
+import RemoveDialog from './remove-dialog';
 
 function InviteList() {
   const { data: invites } = useQuery({
@@ -51,7 +52,10 @@ function InviteList() {
 
       <div className="mt-6 grid grid-cols-3 gap-4">
         {filteredInvites?.map((invite) => (
-          <Card key={invite.id} className="hover:ring-1 hover:ring-foreground">
+          <Card
+            key={invite.id}
+            className="flex flex-col hover:ring-1 hover:ring-foreground"
+          >
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
                 <span>{invite.alias}</span>
@@ -73,7 +77,7 @@ function InviteList() {
                 />
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col gap-4 divide-y">
+            <CardContent className="flex flex-col gap-4 divide-y flex-1">
               {!invite.guests?.length && (
                 <span className="font-light text-slate-800 italic">
                   Nenhum convidado adicionado a este convite
@@ -86,7 +90,17 @@ function InviteList() {
             <CardFooter>
               <div className="flex w-full flex-col items-end gap-4">
                 <span>Criado em {dayjs(invite.createdAt).format('L LT')}</span>
-                <InviteQRCode inviteId={invite.id} />
+
+                <div className="flex gap-2">
+                  <InviteQRCode inviteId={invite.id} />
+
+                  <RemoveDialog
+                    inviteId={invite.id}
+                    trigger={
+                      <Button variant="destructive">Excluir convite</Button>
+                    }
+                  />
+                </div>
               </div>
             </CardFooter>
           </Card>

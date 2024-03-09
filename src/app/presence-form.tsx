@@ -17,7 +17,7 @@ import {
   FormItem,
   FormLabel,
 } from '~/components/ui/form';
-import { editInvite, getInviteById } from '~/data/get-invites';
+import { editInvite, getInviteById } from '~/data/invite-data';
 
 function PresenceForm() {
   const [inviteId] = useQueryState('i');

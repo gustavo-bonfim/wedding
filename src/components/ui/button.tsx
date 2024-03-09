@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: 'bg-wedding text-white shadow hover:bg-wedding/90',
         destructive:
-          'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
+          'bg-destructive text-white shadow-sm hover:bg-destructive/90',
         outline:
           'bg-wedding text-white transition hover:border hover:border-wedding hover:bg-transparent hover:text-wedding',
         secondary:

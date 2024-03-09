@@ -89,3 +89,31 @@ export async function GET(_, { params }: RouteContext) {
 
   return Response.json(invite);
 }
+// @ts-ignore
+export async function DELETE(_, { params }: RouteContext) {
+  const invite = await prisma.invite.findUnique({
+    where: {
+      id: params.id,
+    },
+    include: {
+      guests: true,
+    },
+  });
+
+  if (!invite) {
+    return Response.json(
+      { error: 'Not found' },
+      {
+        status: 404,
+      },
+    );
+  }
+
+  await prisma.invite.delete({
+    where: {
+      id: invite.id,
+    },
+  });
+
+  return Response.json({});
+}
