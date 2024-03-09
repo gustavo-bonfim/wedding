@@ -5,7 +5,6 @@ import dayjs from 'dayjs';
 import { Edit, Search } from 'lucide-react';
 import { useQueryState } from 'nuqs';
 import { useState } from 'react';
-import InviteQRCode from '~/components/invite-qr-code';
 import { Button } from '~/components/ui/button';
 import {
   Card,
@@ -58,7 +57,9 @@ function InviteList() {
           >
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
-                <span>{invite.alias}</span>
+                <span>
+                  {invite.alias} - {invite.id}
+                </span>
                 <InviteDialog
                   invite={selectedInvite}
                   onClose={() => {
@@ -92,7 +93,15 @@ function InviteList() {
                 <span>Criado em {dayjs(invite.createdAt).format('L LT')}</span>
 
                 <div className="flex gap-2">
-                  <InviteQRCode inviteId={invite.id} />
+                  <Button>
+                    <a
+                      target="_blank"
+                      href={`https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${invite.id}`}
+                      rel="noreferrer"
+                    >
+                      Gerar QR Code
+                    </a>
+                  </Button>
 
                   <RemoveDialog
                     inviteId={invite.id}

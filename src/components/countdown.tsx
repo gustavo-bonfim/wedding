@@ -40,40 +40,40 @@ function Countdown() {
   );
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
 
+  const infos = [
+    {
+      label: pluralize('ano', years),
+      value: years,
+    },
+    {
+      label: pluralize('mes', months),
+      value: months,
+    },
+    {
+      label: pluralize('dia', days),
+      value: days,
+    },
+    {
+      label: pluralize('hora', hours),
+      value: hours,
+    },
+    {
+      label: pluralize('minuto', minutes),
+      value: minutes,
+    },
+  ].filter((item) => item.value > 0);
+
   return (
     <section className="grid grid-cols-2 gap-4 md:grid-cols-5">
-      {years > 0 && (
-        <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
-          <span>{years}</span>
-          <span>{pluralize('ano', years)}</span>
+      {infos.map((info) => (
+        <div
+          key={info.label}
+          className="col-span-1 flex flex-col items-center divide-y divide-wedding rounded-sm p-4 shadow-lg ring-1 ring-wedding last:odd:col-span-2 last:odd:lg:col-span-1"
+        >
+          <span>{info.value}</span>
+          <span>{info.label}</span>
         </div>
-      )}
-      {months > 0 && (
-        <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
-          <span>{months}</span>
-          <span>{pluralize('mes', months)}</span>
-        </div>
-      )}
-      {days > 0 && (
-        <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
-          <span>
-            <span>{days}</span>
-          </span>
-          <span>{pluralize('dia', days)}</span>
-        </div>
-      )}
-      {hours > 0 && (
-        <div className="flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground">
-          <span>{hours}</span>
-          <span>{pluralize('hora', hours)}</span>
-        </div>
-      )}
-      {minutes > 0 && (
-        <div className="col-span-2 flex flex-col items-center divide-y divide-foreground rounded-sm p-4 shadow-lg ring-1 ring-foreground lg:col-span-1">
-          <span>{minutes}</span>
-          <span>{pluralize('minuto', minutes)}</span>
-        </div>
-      )}
+      ))}
     </section>
   );
 }
