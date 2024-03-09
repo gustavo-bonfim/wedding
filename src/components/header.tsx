@@ -6,19 +6,19 @@ function Header() {
   return (
     <header className="invisible flex h-[60px] w-full items-center justify-between md:visible">
       <Logo />
-      <ul className="invisible flex gap-5 uppercase md:visible">
+      <ul className="flex gap-5 font-semibold text-wedding uppercase">
         <li>
-          <a className="hover:underline hover:opacity-70" href="/">
+          <a className="hover:underline" href="#presence">
             Confirmar Presença
           </a>
         </li>
         <li>
-          <a className="hover:underline hover:opacity-70" href="#presentes">
+          <a className="hover:underline" href="#presentes">
             Lista de Presentes
           </a>
         </li>
         <li>
-          <a className="hover:underline hover:opacity-70" href="#location">
+          <a className="hover:underline" href="#location">
             Como Chegar
           </a>
         </li>

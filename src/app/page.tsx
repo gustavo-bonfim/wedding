@@ -1,4 +1,5 @@
 import { MapPin } from 'lucide-react';
+import { Suspense } from 'react';
 import Countdown from '~/components/countdown';
 import FadeDiv from '~/components/fade-div';
 import Header from '~/components/header';
@@ -6,6 +7,7 @@ import MainLogo from '~/components/main-logo';
 import SectionContent from '~/components/section-content';
 import SectionTitle from '~/components/section-title';
 import { Button } from '~/components/ui/button';
+import PresenceForm from './presence-form';
 
 function Home() {
   return (
@@ -13,7 +15,7 @@ function Home() {
       <FadeDiv>
         <Header />
       </FadeDiv>
-      <div className="flex flex-col items-center gap-16">
+      <div className="flex flex-col items-center gap-12 pb-12 md:gap-16">
         <FadeDiv className="flex w-full flex-col items-center justify-center">
           <MainLogo />
 
@@ -56,6 +58,14 @@ function Home() {
               Ver lista de presentes
             </a>
           </Button>
+        </SectionContent>
+
+        <SectionContent id="presence">
+          <SectionTitle>Confirmar presença</SectionTitle>
+
+          <Suspense>
+            <PresenceForm />
+          </Suspense>
         </SectionContent>
 
         <SectionContent>

@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt"
-      className={`${inter.variable} ${BurguesFont.variable} ${doulaise.variable} ${unna.variable} scroll-smooth`}
+      className={`${inter.variable}${BurguesFont.variable}${doulaise.variable}${unna.variable}scroll-smooth`}
     >
       <head>
         <title>Casamento K&G</title>

@@ -27,7 +27,6 @@ const config = {
       },
       colors: {
         gold: 'var(--gold)',
-        paper: 'hsl(var(--paper))',
         wedding: 'var(--wedding)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

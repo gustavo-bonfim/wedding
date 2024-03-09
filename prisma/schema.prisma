@@ -17,7 +17,7 @@ model Invite {
   createdAt      DateTime  @default(now()) @map("created_at")
   firstVisitedAt DateTime? @map("first_visited_at")
 
-  Guest Guest[]
+  guests Guest[]
 }
 
 model Guest {

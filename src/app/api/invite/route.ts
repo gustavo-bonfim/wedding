@@ -7,7 +7,7 @@ export async function GET() {
       createdAt: 'desc',
     },
     include: {
-      Guest: true,
+      guests: true,
     },
   });
 
@@ -30,14 +30,14 @@ export async function POST(request: Request) {
   const invite = await prisma.invite.create({
     data: {
       alias: body.alias,
-      Guest: {
+      guests: {
         createMany: {
           data: body.guests,
         },
       },
     },
     include: {
-      Guest: true,
+      guests: true,
     },
   });
 
