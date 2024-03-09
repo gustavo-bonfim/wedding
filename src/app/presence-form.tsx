@@ -1,10 +1,12 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
 import { Loader } from 'lucide-react';
 import { useQueryState } from 'nuqs';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 import { Button } from '~/components/ui/button';
 import { Checkbox } from '~/components/ui/checkbox';
@@ -15,7 +17,7 @@ import {
   FormItem,
   FormLabel,
 } from '~/components/ui/form';
-import { getInviteById } from '~/data/get-invites';
+import { editInvite, getInviteById } from '~/data/get-invites';
 
 function PresenceForm() {
   const [inviteId] = useQueryState('i');
@@ -31,9 +33,10 @@ function PresenceForm() {
     alias: z.string(),
     guests: z.array(
       z.object({
-        id: z.string().optional().nullable(),
+        id: z.string(),
+        inviteId: z.string(),
         name: z.string().min(1, 'Preencha o nome do convidado'),
-        willBePresent: z.boolean().optional().default(false),
+        willBePresent: z.boolean().default(false),
       }),
     ),
   });
@@ -49,14 +52,17 @@ function PresenceForm() {
     resolver: zodResolver(formSchema),
   });
 
-  function handleSubmit(values: FormValues) {
-    console.log(values);
-  }
+  const { mutate: submitValues, isPending } = useMutation({
+    mutationFn: editInvite,
+    onSuccess: () => {
+      toast.success('Presença confirmada com sucesso');
+    },
+  });
 
   if (isLoading) {
     return (
       <div className="flex items-center gap-2">
-        <Loader className="h-4 w-4 animate-spin" />
+        <Loader className="h-4 w-4 animate-spin text-wedding" />
         <span>Carregando informações do convite</span>
       </div>
     );
@@ -76,7 +82,10 @@ function PresenceForm() {
   return (
     <div>
       <Form {...form}>
-        <form className="space-y-4" onSubmit={form.handleSubmit(handleSubmit)}>
+        <form
+          className="space-y-4"
+          onSubmit={form.handleSubmit((values) => submitValues(values))}
+        >
           {invite?.guests?.map((guest, index) => (
             <div key={guest.id}>
               <FormLabel className="text-wedding">{guest.name}</FormLabel>
@@ -97,8 +106,19 @@ function PresenceForm() {
               />
             </div>
           ))}
-          <Button type="submit" className="mx-auto flex">
-            Confirmar
+          <Button type="submit" className="mx-auto flex" disabled={isPending}>
+            <motion.div
+              className="flex items-center justify-center"
+              animate={{
+                width: isPending ? 'auto' : 100,
+              }}
+            >
+              {isPending ? (
+                <Loader className="h-4 w-4 animate-spin text-white" />
+              ) : (
+                'Confirmar'
+              )}
+            </motion.div>
           </Button>
         </form>
       </Form>

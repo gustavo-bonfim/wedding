@@ -12,3 +12,9 @@ export async function getInviteById(inviteId: string | null) {
 
   return data ?? [];
 }
+
+export async function editInvite(values: Partial<Invite>) {
+  const { data } = await api.put<Invite>(`/invite/${values.id}`, values);
+
+  return data;
+}
