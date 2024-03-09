@@ -49,7 +49,7 @@ function InviteList() {
         </div>
       </div>
 
-      <div className="mt-6 grid grid-cols-3 gap-4">
+      <div className="mt-6 grid-cols-1 grid-cols-3 gap-4 md:grid">
         {filteredInvites?.map((invite) => (
           <Card
             key={invite.id}
