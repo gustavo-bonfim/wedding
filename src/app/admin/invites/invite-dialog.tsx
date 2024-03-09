@@ -112,6 +112,15 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
       queryClient.setQueryData<Invite[]>(['invites'], (data) => {
         if (!data) return data;
 
+        if (isEditMode) {
+          return data.map((item) => {
+            if (item.id === invite.id) {
+              return invite;
+            }
+            return item;
+          });
+        }
+
         return [invite, ...data];
       });
 
