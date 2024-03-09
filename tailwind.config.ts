@@ -22,7 +22,6 @@ const config = {
       fontFamily: {
         sans: ['var(--font-unna)', ...fontFamily.sans],
         burgues: 'var(--font-burgues)',
-        doulaise: 'var(--font-doulaise)',
         unna: 'var(--font-unna)',
       },
       colors: {

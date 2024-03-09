@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Monsieur_La_Doulaise, Unna } from 'next/font/google';
+import { Unna } from 'next/font/google';
 import LocalFont from 'next/font/local';
 import { Toaster } from '~/components/ui/sonner';
 
@@ -9,12 +9,7 @@ const BurguesFont = LocalFont({
   src: '../Burgues-Script-Regular.ttf',
   variable: '--font-burgues',
 });
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const doulaise = Monsieur_La_Doulaise({
-  subsets: ['latin'],
-  variable: '--font-doulaise',
-  weight: '400',
-});
+
 const unna = Unna({
   subsets: ['latin'],
   variable: '--font-unna',
@@ -25,7 +20,10 @@ export const metadata: Metadata = {
   title: 'Wedding',
 };
 
+import { twMerge } from 'tailwind-merge';
 import Providers from './providers';
+
+const fonts = [BurguesFont.variable, unna.variable].join(' ');
 
 export default function RootLayout({
   children,
@@ -33,10 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="pt"
-      className={`${inter.variable}${BurguesFont.variable}${doulaise.variable}${unna.variable}scroll-smooth`}
-    >
+    <html lang="pt" className={twMerge(fonts, 'scroll-smooth')}>
       <head>
         <title>Casamento K&G</title>
       </head>
