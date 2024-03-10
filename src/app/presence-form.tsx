@@ -122,11 +122,6 @@ function PresenceForm() {
           </Button>
         </form>
       </Form>
-
-      <p className="mt-8 font-semibold italic opacity-60">
-        * Os convites são enviados por famílias, se achar que esta faltando
-        alguém, por favor, nos avise!
-      </p>
     </div>
   );
 }
