@@ -17,7 +17,13 @@ const unna = Unna({
 });
 
 export const metadata: Metadata = {
-  title: 'Wedding',
+  title: 'Casamento K&G',
+  description: 'Venha celebrar esta data especial conosco!',
+  metadataBase: new URL('https://kethelyngustavowedd.com.br'),
+  openGraph: {
+    title: 'Casamento K&G',
+    description: 'Venha celebrar esta data especial conosco!',
+  },
 };
 
 import { twMerge } from 'tailwind-merge';
@@ -32,9 +38,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" className={twMerge(fonts, 'scroll-smooth')}>
-      <head>
-        <title>Casamento K&G</title>
-      </head>
       <body>
         <Providers>
           <div className="container mx-auto min-h-screen space-y-6 p-4 antialiased">
