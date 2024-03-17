@@ -90,10 +90,7 @@ function PresenceForm() {
   return (
     <div>
       <Form {...form}>
-        <form
-          className="space-y-4"
-          onSubmit={form.handleSubmit((values) => submitValues(values))}
-        >
+        <form onSubmit={form.handleSubmit((values) => submitValues(values))}>
           {invite?.guests?.map((guest, index) => (
             <div key={guest.id}>
               <FormLabel className="text-wedding">{guest.name}</FormLabel>
@@ -114,7 +111,12 @@ function PresenceForm() {
               />
             </div>
           ))}
-          <Button type="submit" className="mx-auto flex" disabled={isPending}>
+          <Button
+            type="submit"
+            className="mx-auto mt-6 flex lg:mt-4"
+            disabled={isPending}
+            variant="outline"
+          >
             <motion.div
               className="flex items-center justify-center"
               animate={{
