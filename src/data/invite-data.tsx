@@ -22,3 +22,7 @@ export async function editInvite(values: Partial<Invite>) {
 export async function deleteInvite(inviteId: string) {
   return api.delete(`/invite/${inviteId}`);
 }
+
+export async function markVisitedDate(inviteId: string) {
+  return api.patch(`/invite/${inviteId}`);
+}

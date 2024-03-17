@@ -5,6 +5,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { Loader } from 'lucide-react';
 import { useQueryState } from 'nuqs';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -17,7 +18,7 @@ import {
   FormItem,
   FormLabel,
 } from '~/components/ui/form';
-import { editInvite, getInviteById } from '~/data/invite-data';
+import { editInvite, getInviteById, markVisitedDate } from '~/data/invite-data';
 
 function PresenceForm() {
   const [inviteId] = useQueryState('i');
@@ -26,7 +27,14 @@ function PresenceForm() {
     queryKey: ['invite', inviteId],
     queryFn: () => getInviteById(inviteId),
     enabled: !!inviteId,
+    refetchOnWindowFocus: false,
   });
+
+  useEffect(() => {
+    if (invite?.id && !invite?.firstVisitedAt) {
+      markVisitedDate(invite.id);
+    }
+  }, [invite]);
 
   const formSchema = z.object({
     id: z.string(),

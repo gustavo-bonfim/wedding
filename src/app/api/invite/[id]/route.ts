@@ -117,3 +117,34 @@ export async function DELETE(_, { params }: RouteContext) {
 
   return Response.json({});
 }
+
+// @ts-ignore
+export async function PATCH(_, { params }: RouteContext) {
+  const invite = await prisma.invite.findUnique({
+    where: {
+      id: params.id,
+    },
+  });
+
+  if (!invite) {
+    return Response.json(
+      { error: 'Not found' },
+      {
+        status: 404,
+      },
+    );
+  }
+
+  if (!invite.firstVisitedAt) {
+    await prisma.invite.update({
+      data: {
+        firstVisitedAt: new Date(),
+      },
+      where: {
+        id: params.id,
+      },
+    });
+  }
+
+  return Response.json({});
+}

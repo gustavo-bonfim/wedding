@@ -90,7 +90,17 @@ function InviteList() {
             </CardContent>
             <CardFooter>
               <div className="flex w-full flex-col items-end gap-4">
-                <span>Criado em {dayjs(invite.createdAt).format('L LT')}</span>
+                <div className="flex flex-col items-end">
+                  <span>
+                    Criado em {dayjs(invite.createdAt).format('L LT')}
+                  </span>
+                  {invite.firstVisitedAt && (
+                    <span>
+                      Visto primeiro em{' '}
+                      {dayjs(invite.firstVisitedAt).format('L LT')}
+                    </span>
+                  )}
+                </div>
 
                 <div className="flex gap-2">
                   <Button>
