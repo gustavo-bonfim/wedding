@@ -6,6 +6,7 @@ import Header from '~/components/header';
 import MainLogo from '~/components/main-logo';
 import SectionContent from '~/components/section-content';
 import SectionTitle from '~/components/section-title';
+import TimelineItem from '~/components/timeline-item';
 import { Button } from '~/components/ui/button';
 import PresenceForm from './presence-form';
 
@@ -26,6 +27,39 @@ function Home() {
 
           <Countdown />
         </FadeDiv>
+
+        <SectionContent className="space-y-4">
+          <TimelineItem
+            year="2021"
+            title="Primeiro encontro"
+            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
+            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+          />
+          <TimelineItem
+            year="2022"
+            title="Titulo"
+            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
+            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+          />
+          <TimelineItem
+            year="2023"
+            title="Titulo"
+            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
+            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+          />
+          <TimelineItem
+            year="2024"
+            title="Titulo"
+            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
+            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+          />
+          <TimelineItem
+            year="2025"
+            title="Titulo"
+            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
+            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+          />
+        </SectionContent>
 
         <SectionContent>
           <span>Olá queridos amigos e familiares,</span>
@@ -99,6 +133,26 @@ function Home() {
           </div>
         </SectionContent>
       </div>
+      <footer className="mt-12 w-full text-center">
+        Made with &#10084;&#65039;&#65039; by{' '}
+        <a
+          className="font-semibold text-wedding"
+          href="https://github.com/GustavoBonfimS"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Gustavo Bonfim
+        </a>
+        {' and '}
+        <a
+          className="font-semibold text-wedding"
+          href="https://github.com/OtavioPortella"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Otavio Portella
+        </a>
+      </footer>
     </>
   );
 }
