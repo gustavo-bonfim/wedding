@@ -1,3 +1,5 @@
+import { Heart } from 'lucide-react';
+
 interface TimelineItemProps {
   year: string;
   title: string;
@@ -6,7 +8,10 @@ interface TimelineItemProps {
 
 function TimelineItem({ content, title, year }: TimelineItemProps) {
   return (
-    <div className="group flex gap-4 even:flex-row-reverse">
+    <div className="group relative flex gap-6 even:flex-row-reverse">
+      <div className="absolute top-px left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-full border border-gold bg-background p-2">
+        <Heart size={10} />
+      </div>
       <div className="flex-1 flex items-center justify-center">
         <span className="text-4xl text-wedding">{year}</span>
       </div>

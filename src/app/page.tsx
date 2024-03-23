@@ -28,10 +28,10 @@ function Home() {
           <Countdown />
         </FadeDiv>
 
-        <SectionContent>
+        <SectionContent className="space-y-4">
           <TimelineItem
             year="2021"
-            title="Primeiro encontro"
+            title="Nos conhecemos"
             content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
             sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
           />
