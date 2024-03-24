@@ -125,6 +125,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
       });
 
       toast.success('Convite criado com sucesso!');
+      form.reset();
       handleClose();
     },
     onError: (err) => {
@@ -156,7 +157,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
         {trigger}
       </DialogTrigger>
 
-      <DialogContent>
+      <DialogContent className="max-h-[90dvh] overflow-scroll">
         <DialogHeader>
           <DialogTitle className="text-2xl">
             {isEditMode ? 'Editar convite' : 'Novo convite'} - {invite?.id}
