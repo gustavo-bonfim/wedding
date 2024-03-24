@@ -7,7 +7,7 @@ function Footer() {
       <div>
         Made with &#10084;&#65039;&#65039; by{' '}
         <a
-          className="font-semibold text-wedding"
+          className="font-semibold text-wedding underline"
           href="https://github.com/GustavoBonfimS"
           target="_blank"
           rel="noreferrer"
@@ -16,7 +16,7 @@ function Footer() {
         </a>
         {' and '}
         <a
-          className="font-semibold text-wedding"
+          className="font-semibold text-wedding underline"
           href="https://github.com/OtavioPortella"
           target="_blank"
           rel="noreferrer"
