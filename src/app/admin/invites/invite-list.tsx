@@ -29,9 +29,10 @@ function InviteList() {
 
   const [selectedInvite, setSelectedInvite] = useState<Invite>();
 
-  const filteredInvites = invites?.filter((invite) =>
-    new RegExp(search ?? '', 'ig').test(invite.alias),
-  );
+  const filteredInvites = invites?.filter((invite) => {
+    const guestsNames = invite.guests?.map((guest) => guest.name).join() ?? '';
+    return new RegExp(search ?? '', 'ig').test(invite.alias + guestsNames);
+  });
 
   if (!invites) return null;
 
