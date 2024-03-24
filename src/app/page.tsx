@@ -31,8 +31,8 @@ function Home() {
         <SectionContent className="space-y-4">
           <TimelineItem
             year="2021"
-            title="Como nos conhecemos"
-            content="Nossas mães haviam se conhecido e já sabiam que seríamos perfeitos um para o outro. Nos conhecemos no dia 27/06 e ali nosso amor começou."
+            title="O início"
+            content="Em 18/07 nosso namoro começou. Desde o começo desejávamos coisas grandiosas para nós e sabíamos onde queríamos chegar."
           />
           <TimelineItem
             year="2023"
