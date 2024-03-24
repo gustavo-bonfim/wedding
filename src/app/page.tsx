@@ -31,33 +31,23 @@ function Home() {
         <SectionContent className="space-y-4">
           <TimelineItem
             year="2021"
-            title="Nos conhecemos"
-            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
-            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
-          />
-          <TimelineItem
-            year="2022"
-            title="Titulo"
-            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
-            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+            title="Como nos conhecemos"
+            content="Nossas mães haviam se conhecido e já sabiam que seríamos perfeitos um para o outro. Nos conhecemos no dia 27/06 e ali nosso amor começou."
           />
           <TimelineItem
             year="2023"
-            title="Titulo"
-            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
-            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+            title="Nossas escolhas e conquistas"
+            content="Firmamos nossas decisões e começamos a trabalhar duro para que tudo se realizasse. Decidimos onde iríamos morar e começamos a pensar como seria o nosso grande dia ao lado de quem amamos."
           />
           <TimelineItem
             year="2024"
-            title="Titulo"
-            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
-            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+            title="Ele pediu, eu disse sim"
+            content="Em 04/01 nosso noivado começou, em um jantar sob a luz de velas foi feito o pedido que dava início a nossa história juntos."
           />
           <TimelineItem
             year="2025"
-            title="Titulo"
-            content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nam,
-            sequi amet maxime explicabo inventore. Eum ex, ea possimus laboriosam"
+            title="O grande dia"
+            content="O dia do nosso casamento vai ser o mais especial. Juntos aos que amamos vamos curtir e celebrar o nosso amor."
           />
         </SectionContent>
 
