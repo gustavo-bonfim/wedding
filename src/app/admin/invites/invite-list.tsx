@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { Edit, Search } from 'lucide-react';
 import { useQueryState } from 'nuqs';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Button } from '~/components/ui/button';
 import {
   Card,
@@ -34,10 +34,22 @@ function InviteList() {
     return new RegExp(search ?? '', 'ig').test(invite.alias + guestsNames);
   });
 
+  const count = useMemo(() => {
+    return invites?.reduce((acc, curr) => {
+      return acc + (curr?.guests?.length ?? 0);
+    }, 0);
+  }, [invites]);
+
   if (!invites) return null;
 
   return (
     <>
+      <div className="mt-4">
+        <span className="font-semibold text-wedding text-xl">
+          {count} convidados e {invites.length} convites cadastrados até o
+          momento
+        </span>
+      </div>
       <div className="mt-4 flex items-center gap-4">
         <span className="text-xl">Filtrar</span>
         <div className="mt-2 flex w-[300px] items-center rounded-full border border-foreground px-4">
