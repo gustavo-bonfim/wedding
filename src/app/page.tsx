@@ -32,22 +32,22 @@ function Home() {
           <TimelineItem
             year="2021"
             title="O início"
-            content="Em 18/07 nosso namoro começou. Desde o começo desejávamos coisas grandiosas para nós e sabíamos onde queríamos chegar."
+            content="Em dezoito de julho, com surpresa e buquê de flores o pedido foi feito, então iniciamos a primeira etapa, o namoro."
           />
           <TimelineItem
             year="2023"
             title="Nossas escolhas e conquistas"
-            content="Firmamos nossas decisões e começamos a trabalhar duro para que tudo se realizasse. Decidimos onde iríamos morar e começamos a pensar como seria o nosso grande dia ao lado de quem amamos."
+            content="Firmamos nossas decisões e começamos a pensar no grande dia. Nos dedicamos para que tudo se realizasse."
           />
           <TimelineItem
             year="2024"
             title="Ele pediu, eu disse sim"
-            content="Em 04/01 nosso noivado começou, em um jantar sob a luz de velas foi feito o pedido que dava início a nossa história juntos."
+            content="Dia quatro de janeiro em um jantar surpresa sob a luz de velas, noivamos."
           />
           <TimelineItem
             year="2025"
             title="O grande dia"
-            content="O dia do nosso casamento vai ser o mais especial. Juntos aos que amamos vamos curtir e celebrar o nosso amor."
+            content=" O momento mais esperado, ao lado de pessoas especiais celebramos com alegria, o casamento."
           />
         </SectionContent>
 

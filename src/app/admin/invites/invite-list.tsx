@@ -119,7 +119,7 @@ function InviteList() {
                   <Button>
                     <a
                       target="_blank"
-                      href={`https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${invite.id}`}
+                      href={`https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://www.kethelyngustavowedd.com.br?i=${invite.id}`}
                       rel="noreferrer"
                     >
                       Gerar QR Code
