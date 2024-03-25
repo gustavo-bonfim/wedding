@@ -29,15 +29,16 @@ export const metadata: Metadata = {
 import { twMerge } from 'tailwind-merge';
 import Providers from './providers';
 
-const fonts = [BurguesFont.variable, unna.variable].join(' ');
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt" className={twMerge(fonts, 'scroll-smooth')}>
+    <html
+      lang="pt"
+      className={twMerge(BurguesFont.variable, unna.variable, 'scroll-smooth')}
+    >
       <body>
         <Providers>
           <div className="container mx-auto min-h-screen space-y-6 p-4 antialiased">
