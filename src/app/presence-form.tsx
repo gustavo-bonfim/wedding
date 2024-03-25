@@ -23,7 +23,11 @@ import { editInvite, getInviteById, markVisitedDate } from '~/data/invite-data';
 function PresenceForm() {
   const [inviteId] = useQueryState('i');
 
-  const { data: invite, isLoading } = useQuery({
+  const {
+    data: invite,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ['invite', inviteId],
     queryFn: () => getInviteById(inviteId),
     enabled: !!inviteId,
@@ -67,6 +71,14 @@ function PresenceForm() {
     },
   });
 
+  if (error) {
+    return (
+      <div className="flex items-center gap-2 text-red-400">
+        Ocorreu um erro inesperado, por favor, entre em contato conosco.
+      </div>
+    );
+  }
+
   if (isLoading) {
     return (
       <div className="flex items-center gap-2">
@@ -90,7 +102,10 @@ function PresenceForm() {
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit((values) => submitValues(values))}>
+        <form
+          onSubmit={form.handleSubmit((values) => submitValues(values))}
+          className="space-y-4"
+        >
           {invite?.guests?.map((guest, index) => (
             <div key={guest.id}>
               <FormLabel className="text-wedding">{guest.name}</FormLabel>
@@ -98,7 +113,7 @@ function PresenceForm() {
                 name={`guests.${index}.willBePresent`}
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className="mt-4 flex items-center gap-2">
+                  <FormItem className="mt-1s flex items-center gap-2">
                     <FormControl className="m-0 p-0">
                       <Checkbox
                         checked={field.value}
