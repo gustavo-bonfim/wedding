@@ -153,6 +153,7 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
         onClick={() => {
           setIsModalOpen(true);
         }}
+        className="print:hidden"
       >
         {trigger}
       </DialogTrigger>

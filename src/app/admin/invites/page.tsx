@@ -11,7 +11,7 @@ async function Invites() {
         <InviteDialog trigger={<Button>Adicionar</Button>} />
       </div>
 
-      <h2 className="mt-6 font-semibold text-xl">
+      <h2 className="mt-6 font-semibold text-xl print:hidden">
         Lista de convites adicionados
       </h2>
 
