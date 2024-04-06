@@ -90,10 +90,10 @@ function InviteItem({ invite }: InviteItemProps) {
           <div className="flex w-full flex-col items-end gap-4">
             <div className="flex flex-col items-end">
               <span>Criado em {dayjs(invite.createdAt).format('L LT')}</span>
-              {invite.firstVisitedAt && (
+              {invite.lastVisitedAt && (
                 <span>
-                  Visto primeiro em{' '}
-                  {dayjs(invite.firstVisitedAt).format('L LT')}
+                  Visto pela ultima vez em{' '}
+                  {dayjs(invite.lastVisitedAt).format('L LT')}
                 </span>
               )}
             </div>

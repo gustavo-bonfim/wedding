@@ -35,7 +35,7 @@ function PresenceForm() {
   });
 
   useEffect(() => {
-    if (invite?.id && !invite?.firstVisitedAt) {
+    if (invite?.id) {
       markVisitedDate(invite.id);
     }
   }, [invite]);

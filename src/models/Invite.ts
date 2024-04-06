@@ -4,7 +4,7 @@ export interface Invite {
   id: string;
   alias: string;
   createdAt: string;
-  firstVisitedAt: string | null;
+  lastVisitedAt: string | null;
 
   guests?: Guest[];
 }
