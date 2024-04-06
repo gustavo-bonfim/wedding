@@ -135,16 +135,14 @@ export async function PATCH(_, { params }: RouteContext) {
     );
   }
 
-  if (!invite.firstVisitedAt) {
-    await prisma.invite.update({
-      data: {
-        firstVisitedAt: new Date(),
-      },
-      where: {
-        id: params.id,
-      },
-    });
-  }
+  await prisma.invite.update({
+    data: {
+      lastVisitedAt: new Date(),
+    },
+    where: {
+      id: params.id,
+    },
+  });
 
   return Response.json({});
 }

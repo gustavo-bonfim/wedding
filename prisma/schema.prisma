@@ -15,7 +15,7 @@ model Invite {
   id             String    @id @default(cuid())
   alias          String
   createdAt      DateTime  @default(now()) @map("created_at")
-  firstVisitedAt DateTime? @map("first_visited_at")
+  lastVisitedAt DateTime? @map("last_visited_at")
 
   guests Guest[]
 }
