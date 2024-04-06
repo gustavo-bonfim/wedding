@@ -177,7 +177,12 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
                 <FormItem>
                   <FormLabel>Apelido</FormLabel>
                   <FormControl>
-                    <Input placeholder="apelido" {...field} />
+                    <Input
+                      {...field}
+                      placeholder="apelido"
+                      autoComplete="off"
+                      className="text-black"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -194,7 +199,12 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
                       <FormLabel>Convidado {index + 1}</FormLabel>
                       <FormControl>
                         <div className="flex items-center gap-2">
-                          <Input placeholder="Nome do convidado" {...field} />
+                          <Input
+                            placeholder="Nome do convidado"
+                            {...field}
+                            autoComplete="off"
+                            className="text-black"
+                          />
                           <Button
                             variant="destructive"
                             size="sm"
