@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     title: 'Casamento K&G',
     description: 'Venha celebrar esta data especial conosco!',
   },
+  robots: {
+    index: false,
+  },
 };
 
 import { twMerge } from 'tailwind-merge';
