@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { Button } from '~/components/ui/button';
-import InviteDialog from './invite-dialog';
+// import { Button } from '~/components/ui/button';
+// import InviteDialog from './invite-dialog';
 import InviteList from './invite-list';
 
 async function Invites() {
@@ -8,7 +8,7 @@ async function Invites() {
     <div>
       <div className="flex justify-between">
         <h1 className="font-bold text-3xl">Convites</h1>
-        <InviteDialog trigger={<Button>Adicionar</Button>} />
+        {/* <InviteDialog trigger={<Button>Adicionar</Button>} /> */}
       </div>
 
       <h2 className="mt-6 font-semibold text-xl print:hidden">
