@@ -3,6 +3,7 @@ import api from '~/services/api';
 
 export async function getInvites() {
   const { data } = await api.get<Invite[]>('/invite');
+  console.log(data);
 
   return data ?? [];
 }

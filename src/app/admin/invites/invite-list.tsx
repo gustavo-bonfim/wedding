@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { Search } from 'lucide-react';
+import { Loader, Search } from 'lucide-react';
 import { useQueryState } from 'nuqs';
 import { useMemo } from 'react';
 
@@ -10,7 +10,7 @@ import { getInvites } from '~/data/invite-data';
 import InviteItem from './invite-item';
 
 function InviteList() {
-  const { data: invites } = useQuery({
+  const { data: invites, isLoading } = useQuery({
     queryKey: ['invites'],
     queryFn: getInvites,
   });
@@ -27,6 +27,14 @@ function InviteList() {
       return acc + (curr?.guests?.length ?? 0);
     }, 0);
   }, [invites]);
+
+  if (isLoading) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center">
+        <Loader size={30} color="black" className="animate-spin" />
+      </div>
+    );
+  }
 
   if (!invites) return null;
 
@@ -52,7 +60,7 @@ function InviteList() {
 
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 print:grid-cols-2 print:gap-y-12">
         {filteredInvites?.map((invite) => (
-          <InviteItem invite={invite} />
+          <InviteItem key={invite.id} invite={invite} />
         ))}
       </div>
     </>
