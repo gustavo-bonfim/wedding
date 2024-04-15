@@ -30,7 +30,7 @@ function InviteItem({ invite }: InviteItemProps) {
     <>
       <div className="hidden break-inside-avoid flex-col items-center justify-center gap-2 text-wedding print:flex print:border-t print:border-t-wedding">
         <div className="mb-6 flex w-full flex-col">
-          <span className="text-sm">{invite.alias}</span>
+          <span className="text-sm">{`${invite.id}: ${invite.alias}`}</span>
           <span className="text-xs">
             {invite.guests?.map((guest) => guest.name).join(', ')}
           </span>
