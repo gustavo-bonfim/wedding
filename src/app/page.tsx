@@ -18,7 +18,7 @@ function Home() {
       </FadeDiv>
       <div className="flex flex-col items-center gap-12 pb-12 md:gap-16">
         <FadeDiv className="relative flex w-full flex-col items-center justify-center">
-          <div className="absolute z-10 h-full w-screen translate-y-[5%] bg-center bg-cover bg-watercolor bg-no-repeat opacity-20 blur-sm" />
+          <div className="-z-10 absolute h-full w-screen translate-y-[5%] bg-center bg-cover bg-watercolor bg-no-repeat opacity-20 blur-sm" />
           <MainLogo />
 
           <SectionTitle>07/06/2025</SectionTitle>
