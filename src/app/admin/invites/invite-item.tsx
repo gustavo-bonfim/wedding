@@ -2,7 +2,7 @@
 
 import dayjs from 'dayjs';
 import { Edit } from 'lucide-react';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import QRCode from 'react-qr-code';
 import Logo from '~/components/logo';
 import { Button } from '~/components/ui/button';
@@ -89,11 +89,11 @@ function InviteItem({ invite }: InviteItemProps) {
         <CardFooter>
           <div className="flex w-full flex-col items-end gap-4">
             <div className="flex flex-col items-end">
-              <span>Criado em {dayjs(invite.createdAt).format('L LT')}</span>
+              <span>Criado em {dayjs(invite.createdAt).format('L HH:mm')}</span>
               {invite.lastVisitedAt && (
                 <span>
                   Visto pela ultima vez em{' '}
-                  {dayjs(invite.lastVisitedAt).format('L LT')}
+                  {dayjs(invite.lastVisitedAt).format('L HH:mm')}
                 </span>
               )}
             </div>
@@ -109,4 +109,4 @@ function InviteItem({ invite }: InviteItemProps) {
   );
 }
 
-export default InviteItem;
+export default memo(InviteItem);

@@ -1,9 +1,10 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import { useDebounce } from '@uidotdev/usehooks';
 import { Loader, Search } from 'lucide-react';
 import { useQueryState } from 'nuqs';
-import { useMemo } from 'react';
+import { useMemo, useTransition } from 'react';
 
 import { Input } from '~/components/ui/input';
 import { getInvites } from '~/data/invite-data';
@@ -15,12 +16,20 @@ function InviteList() {
     queryFn: getInvites,
   });
 
+  const [_, startTransition] = useTransition();
   const [search, setSearch] = useQueryState('q');
 
-  const filteredInvites = invites?.filter((invite) => {
-    const guestsNames = invite.guests?.map((guest) => guest.name).join() ?? '';
-    return new RegExp(search ?? '', 'ig').test(invite.alias + guestsNames);
-  });
+  const debounceSearch = useDebounce(search, 500);
+
+  const filteredInvites = useMemo(() => {
+    return invites?.filter((invite) => {
+      const guestsNames =
+        invite.guests?.map((guest) => guest.name).join() ?? '';
+      return new RegExp(debounceSearch ?? '', 'ig').test(
+        invite.alias + guestsNames,
+      );
+    });
+  }, [debounceSearch, invites]);
 
   const count = useMemo(() => {
     return invites?.reduce((acc, curr) => {
@@ -52,7 +61,11 @@ function InviteList() {
           <Search size={15} />
           <Input
             value={search ?? ''}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              startTransition(() => {
+                setSearch(e.target.value);
+              });
+            }}
             placeholder="Buscar convites"
           />
         </div>
