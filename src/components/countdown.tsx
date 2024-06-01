@@ -4,7 +4,8 @@ import dayjs from 'dayjs';
 import pluralize from 'pluralize';
 import { useEffect, useState } from 'react';
 
-pluralize.addPluralRule(/es/i, 'eses');
+// pluralize.addPluralRule(/mes/i, 'meses');
+pluralize.addIrregularRule('mes', 'meses');
 
 function calculateDiff() {
   const weddingDate = dayjs('2025-06-17T17:00:00-03:00');
