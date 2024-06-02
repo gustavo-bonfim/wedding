@@ -4,16 +4,14 @@ import dayjs from 'dayjs';
 import pluralize from 'pluralize';
 import { useEffect, useState } from 'react';
 
-// pluralize.addPluralRule(/mes/i, 'meses');
 pluralize.addIrregularRule('mes', 'meses');
 
 function calculateDiff() {
-  const weddingDate = dayjs('2025-06-17T17:00:00-03:00');
+  const weddingDate = dayjs('2025-06-07T17:00:00-03:00');
   const now = dayjs();
 
   return weddingDate.diff(now);
 }
-
 function Countdown() {
   const [timeLeft, setTimeLeft] = useState(() => calculateDiff());
 
@@ -29,17 +27,12 @@ function Countdown() {
     };
   }, []);
 
-  const years = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 365));
-  const months = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30),
-  );
-  const days = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24),
-  );
-  const hours = Math.floor(
-    (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-  );
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const remainingTime = dayjs.duration(timeLeft);
+  const years = remainingTime.days();
+  const months = remainingTime.months();
+  const days = remainingTime.days();
+  const hours = remainingTime.hours();
+  const minutes = remainingTime.minutes();
 
   const infos = [
     {
