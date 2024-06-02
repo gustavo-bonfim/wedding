@@ -9,15 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-wedding text-white shadow hover:bg-wedding/90',
+        default: 'bg-wedding text-white shadow active:bg-wedding/90',
         destructive:
-          'bg-destructive text-white shadow-sm hover:bg-destructive/90',
+          'bg-destructive text-white shadow-sm active:bg-destructive/90',
         outline:
-          'bg-wedding text-white transition hover:border hover:border-wedding hover:bg-transparent hover:text-wedding',
+          'bg-wedding text-white transition active:border active:border-wedding active:bg-transparent active:text-wedding',
         secondary:
-          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'bg-secondary text-secondary-foreground shadow-sm active:bg-secondary/80',
+        ghost: 'active:bg-accent active:text-accent-foreground',
+        link: 'text-primary underline-offset-4 active:underline',
       },
       size: {
         default: 'h-9 px-4 py-2',

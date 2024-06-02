@@ -1,4 +1,4 @@
-import ImageDialog from './image-dialog';
+import ImageDialog from '~/components/image-dialog';
 
 function Photos() {
   const images = Array.from({ length: 50 }).map((_, index) => ({
@@ -22,7 +22,7 @@ function Photos() {
                 alt="test pic"
                 key={image.id}
                 src={image.image}
-                className="rounde h-52 w-full object-coverd"
+                className="h-52 w-full rounded object-contain"
               />
             }
           />
