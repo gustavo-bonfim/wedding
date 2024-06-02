@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Unna } from 'next/font/google';
 import LocalFont from 'next/font/local';
@@ -50,6 +51,7 @@ export default function RootLayout({
         </Providers>
       </body>
       <Toaster richColors />
+      <Analytics />
     </html>
   );
 }
