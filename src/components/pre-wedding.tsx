@@ -1,3 +1,5 @@
+import { list } from '@vercel/blob';
+import Image from 'next/image';
 import {
   Carousel,
   CarouselContent,
@@ -7,11 +9,14 @@ import {
 } from '~/components/ui/carousel';
 import ImageDialog from './image-dialog';
 
-function PreWedding() {
-  const images = Array.from({ length: 10 }).map((_, index) => ({
-    id: index,
-    image: 'https://via.placeholder.com/120',
-  }));
+async function PreWedding() {
+  const { blobs } = await list({
+    prefix: 'pre-wedding/',
+    mode: 'folded',
+  });
+
+  const images = blobs.filter((b) => !b.url.endsWith('/'));
+
   return (
     <div>
       <Carousel
@@ -23,14 +28,17 @@ function PreWedding() {
       >
         <CarouselContent>
           {images.map((image) => (
-            <CarouselItem key={image.id} className="lg:basis-1/3 md:basis-1/2">
+            <CarouselItem key={image.pathname} className="basis-1/3">
               <ImageDialog
-                image={image.image}
+                image={image.url}
                 trigger={
-                  <img
-                    className="aspect-square w-[100em] rounded"
-                    src={image.image}
+                  <Image
+                    className="w-[100em] rounded"
+                    src={image.url}
                     alt="Imagem do pré wedding"
+                    width={120}
+                    height={120}
+                    quality={100}
                   />
                 }
               />

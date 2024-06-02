@@ -63,7 +63,7 @@ function Home() {
         </SectionContent>
 
         {/* <SectionContent>
-          <SectionTitle>Nosso Pré Wedding ❤️</SectionTitle>
+          <SectionTitle>Pre Wedding</SectionTitle>
 
           <PreWedding />
         </SectionContent> */}

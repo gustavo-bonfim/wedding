@@ -16,10 +16,11 @@ function ImageDialog({ trigger, image }: ImageDialogProps) {
         <Image
           src={image}
           alt="full screen image"
-          width={800}
-          height={800}
+          width={400}
+          height={400}
           quality={100}
-          className="w-screen lg:w-[700px]"
+          className="w-full"
+          priority
         />
       </DialogContent>
     </Dialog>
