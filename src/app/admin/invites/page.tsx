@@ -11,7 +11,7 @@ import InviteList from './invite-list';
 async function Invites({
   searchParams,
 }: { searchParams: { [key: string]: string } }) {
-  if (searchParams.pass !== process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+  if (searchParams.pass !== process.env.ADMIN_PASSWORD) {
     notFound();
   }
 
