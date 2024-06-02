@@ -49,9 +49,9 @@ export default function RootLayout({
             <main>{children}</main>
           </div>
         </Providers>
+        <Analytics />
+        <Toaster richColors />
       </body>
-      <Toaster richColors />
-      <Analytics />
     </html>
   );
 }
