@@ -65,7 +65,7 @@ function Countdown() {
   ].filter((item) => item.value > 0);
 
   return (
-    <section className="grid grid-cols-2 gap-4 md:grid-cols-5">
+    <section className="grid grid-cols-2 gap-4 md:auto-cols-fr md:grid-flow-col md:grid-cols-none">
       {infos.map((info) => (
         <div
           key={info.label}
