@@ -1,19 +1,52 @@
 'use client';
 
 import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import pluralize from 'pluralize';
 import { useEffect, useState } from 'react';
+
+dayjs.extend(duration);
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 pluralize.addIrregularRule('mes', 'meses');
 
 function calculateDiff() {
-  const weddingDate = dayjs('2025-06-07T17:00:00-03:00');
+  const weddingDate = dayjs.tz('2025-06-07T17:00:00', 'America/Sao_Paulo');
   const now = dayjs();
 
-  return weddingDate.diff(now);
+  const years = weddingDate.diff(now, 'year');
+  const months = weddingDate.diff(now.add(years, 'years'), 'month');
+  const days = weddingDate.diff(
+    now.add(years, 'years').add(months, 'months'),
+    'day',
+  );
+  const hours = weddingDate.diff(
+    now.add(years, 'years').add(months, 'months').add(days, 'days'),
+    'hour',
+  );
+  const minutes = weddingDate.diff(
+    now
+      .add(years, 'years')
+      .add(months, 'months')
+      .add(days, 'days')
+      .add(hours, 'hours'),
+    'minute',
+  );
+
+  return {
+    years,
+    months,
+    days,
+    hours,
+    minutes,
+  };
 }
+
 function Countdown() {
-  const [timeLeft, setTimeLeft] = useState(() => calculateDiff());
+  const [timeLeft, setTimeLeft] = useState(calculateDiff);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,12 +60,7 @@ function Countdown() {
     };
   }, []);
 
-  const remainingTime = dayjs.duration(timeLeft);
-  const years = remainingTime.days();
-  const months = remainingTime.months();
-  const days = remainingTime.days();
-  const hours = remainingTime.hours();
-  const minutes = remainingTime.minutes();
+  const { years, months, days, hours, minutes } = timeLeft;
 
   const infos = [
     {
