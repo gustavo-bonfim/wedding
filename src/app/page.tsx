@@ -81,15 +81,26 @@ function Home() {
             para explorar nossa lista de presentes através do link fornecido
             abaixo.
           </p>
-          <Button variant="outline" type="button" className="mx-auto mt-8 flex">
-            <a
-              href="https://lista.havan.com.br/Convidado/ItensListaPresente/734798"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Ver lista de presentes
-            </a>
-          </Button>
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <Button variant="outline" type="button">
+              <a
+                href="https://www.finalfeliz.de/bonfim-e-morais"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Lista de presentes Magalu
+              </a>
+            </Button>
+            <Button variant="outline" type="button">
+              <a
+                href="https://lista.havan.com.br/Convidado/ItensListaPresente/734798"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Lista de presentes Havan
+              </a>
+            </Button>
+          </div>
         </SectionContent>
 
         <SectionContent id="presence">
