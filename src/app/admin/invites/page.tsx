@@ -3,18 +3,11 @@ import {
   QueryClient,
   dehydrate,
 } from '@tanstack/react-query';
-import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { getInvites } from '~/data/invite-data';
 import InviteList from './invite-list';
 
-async function Invites({
-  searchParams,
-}: { searchParams: { [key: string]: string } }) {
-  if (searchParams.pass !== process.env.ADMIN_PASSWORD) {
-    notFound();
-  }
-
+async function Invites() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
