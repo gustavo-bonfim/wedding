@@ -11,10 +11,12 @@ import { getInvites } from '~/data/invite-data';
 import InviteItem from './invite-item';
 
 function InviteList() {
-  const { data: invites, isLoading } = useQuery({
+  const { data: response, isLoading } = useQuery({
     queryKey: ['invites'],
     queryFn: getInvites,
   });
+
+  const { invites, confirmedGuests, guestsCount } = response ?? {};
 
   const [_, startTransition] = useTransition();
   const [search, setSearch] = useQueryState('q');
@@ -31,12 +33,6 @@ function InviteList() {
     });
   }, [debounceSearch, invites]);
 
-  const count = useMemo(() => {
-    return invites?.reduce((acc, curr) => {
-      return acc + (curr?.guests?.length ?? 0);
-    }, 0);
-  }, [invites]);
-
   if (isLoading) {
     return (
       <div className="flex h-screen w-screen items-center justify-center">
@@ -49,10 +45,13 @@ function InviteList() {
 
   return (
     <>
-      <div className="mt-4">
-        <span className="font-semibold text-wedding text-xl">
-          {count} convidados e {invites.length} convites cadastrados até o
+      <div className="mt-4 flex flex-col gap-3">
+        <span className="font-semibold text-xl">
+          {guestsCount} convidados e {invites.length} convites cadastrados até o
           momento
+        </span>
+        <span className="font-bold text-wedding text-xl">
+          {confirmedGuests} convidados confirmaram a presença
         </span>
       </div>
       <div className="mt-4 flex items-center gap-4 print:hidden">

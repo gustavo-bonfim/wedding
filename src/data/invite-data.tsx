@@ -1,8 +1,14 @@
 import { Invite } from '~/models/Invite';
 import api from '~/services/api';
 
+export type InviteIndexResponse = {
+  invites: Invite[];
+  guestsCount: number;
+  confirmedGuests: number;
+};
+
 export async function getInvites() {
-  const { data } = await api.get<Invite[]>('/invite');
+  const { data } = await api.get<InviteIndexResponse>('/invite');
 
   return data ?? [];
 }

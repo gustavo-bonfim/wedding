@@ -1,6 +1,5 @@
 'use client';
 
-import { Invite } from '@prisma/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ReactNode, useState } from 'react';
 import { toast } from 'sonner';
@@ -15,7 +14,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '~/components/ui/alert-dialog';
-import { deleteInvite as deleteInviteFn } from '~/data/invite-data';
+import {
+  InviteIndexResponse,
+  deleteInvite as deleteInviteFn,
+} from '~/data/invite-data';
 
 interface RemoveDialogProps {
   trigger: ReactNode;
@@ -30,10 +32,13 @@ function RemoveDialog({ trigger, inviteId }: RemoveDialogProps) {
   const { mutate: deleteInvite, isPending } = useMutation({
     mutationFn: deleteInviteFn,
     onSuccess: () => {
-      queryClient.setQueryData<Invite[]>(['invites'], (data) => {
+      queryClient.setQueryData<InviteIndexResponse>(['invites'], (data) => {
         if (!data) return data;
 
-        return data.filter((invite) => invite.id !== inviteId);
+        return {
+          ...data,
+          invites: data.invites.filter((invite) => invite.id !== inviteId),
+        };
       });
 
       toast.info('Convite e convidados deletados com sucesso.');

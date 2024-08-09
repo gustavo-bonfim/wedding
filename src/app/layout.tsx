@@ -45,7 +45,7 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-          <div className="container mx-auto min-h-screen space-y-6 p-4 antialiased">
+          <div className="container mx-auto min-h-screen space-y-6 p-4 antialiased overflow-x-clip">
             <main>{children}</main>
           </div>
         </Providers>

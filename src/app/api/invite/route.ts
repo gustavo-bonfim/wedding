@@ -11,7 +11,18 @@ export async function GET() {
     },
   });
 
-  return Response.json(invites);
+  const confirmedGuests = await prisma.guest.count({
+    where: {
+      willBePresent: true,
+    },
+  });
+  const guestsCount = await prisma.guest.count();
+
+  return Response.json({
+    invites,
+    confirmedGuests,
+    guestsCount,
+  });
 }
 
 const createInviteBodySchema = z.object({

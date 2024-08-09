@@ -26,6 +26,7 @@ import {
   FormMessage,
 } from '~/components/ui/form';
 import { Input } from '~/components/ui/input';
+import { InviteIndexResponse } from '~/data/invite-data';
 import { Invite } from '~/models/Invite';
 import api from '~/services/api';
 
@@ -109,19 +110,25 @@ function InviteDialog({ invite, trigger, onClose }: InviteDialogProps) {
     },
     onSuccess: (response) => {
       const invite = response.data;
-      queryClient.setQueryData<Invite[]>(['invites'], (data) => {
+      queryClient.setQueryData<InviteIndexResponse>(['invites'], (data) => {
         if (!data) return data;
 
         if (isEditMode) {
-          return data.map((item) => {
-            if (item.id === invite.id) {
-              return invite;
-            }
-            return item;
-          });
+          return {
+            ...data,
+            invites: data.invites.map((item) => {
+              if (item.id === invite.id) {
+                return invite;
+              }
+              return item;
+            }),
+          };
         }
 
-        return [invite, ...data];
+        return {
+          ...data,
+          invites: [invite, ...data.invites],
+        };
       });
 
       toast.success('Convite criado com sucesso!');
