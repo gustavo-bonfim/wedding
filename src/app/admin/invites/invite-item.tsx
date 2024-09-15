@@ -1,7 +1,7 @@
 'use client';
 
 import dayjs from 'dayjs';
-import { Edit } from 'lucide-react';
+import { Check, Edit } from 'lucide-react';
 import { memo, useState } from 'react';
 import QRCode from 'react-qr-code';
 import Logo from '~/components/logo';
@@ -82,9 +82,14 @@ function InviteItem({ invite }: InviteItemProps) {
               Nenhum convidado adicionado a este convite
             </span>
           )}
-          {invite.guests?.map((guest) => (
-            <span key={guest.id}>{guest.name}</span>
-          ))}
+          <ul>
+            {invite.guests?.map((guest) => (
+              <li className="flex w-full items-center justify-between">
+                <span key={guest.id}>{guest.name}</span>
+                {guest.willBePresent && <Check size={25} color="green" />}
+              </li>
+            ))}
+          </ul>
         </CardContent>
         <CardFooter>
           <div className="flex w-full flex-col items-end gap-4">
