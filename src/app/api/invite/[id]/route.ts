@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import prisma from '~/database/prisma';
 
-type RouteContext = { params: { id: string } };
+type RouteContext = { params: Promise<{ id: string }> };
 
 const updateInviteSchema = z.object({
   id: z.string().min(1),
@@ -15,7 +15,8 @@ const updateInviteSchema = z.object({
   ),
 });
 
-export async function PUT(request: Request, { params }: RouteContext) {
+export async function PUT(request: Request, props: RouteContext) {
+  const params = await props.params;
   const body = await updateInviteSchema.parseAsync(await request.json());
 
   const inviteExists = await prisma.invite.findUnique({
@@ -68,7 +69,8 @@ export async function PUT(request: Request, { params }: RouteContext) {
 }
 
 // @ts-ignore
-export async function GET(_, { params }: RouteContext) {
+export async function GET(_, props: RouteContext) {
+  const params = await props.params;
   const invite = await prisma.invite.findUnique({
     where: {
       id: params.id,
@@ -90,7 +92,8 @@ export async function GET(_, { params }: RouteContext) {
   return Response.json(invite);
 }
 // @ts-ignore
-export async function DELETE(_, { params }: RouteContext) {
+export async function DELETE(_, props: RouteContext) {
+  const params = await props.params;
   const invite = await prisma.invite.findUnique({
     where: {
       id: params.id,
@@ -119,7 +122,8 @@ export async function DELETE(_, { params }: RouteContext) {
 }
 
 // @ts-ignore
-export async function PATCH(_, { params }: RouteContext) {
+export async function PATCH(_, props: RouteContext) {
+  const params = await props.params;
   const invite = await prisma.invite.findUnique({
     where: {
       id: params.id,

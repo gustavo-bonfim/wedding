@@ -5,7 +5,7 @@ function Footer() {
     <footer className="mt-12 flex w-full flex-col items-center gap-12">
       <Logo />
       <div>
-        Made with &#10084;&#65039;&#65039; by{' '}
+        Feito com &#10084;&#65039;&#65039; pelo noivo{' '}
         <a
           className="font-semibold text-wedding underline"
           href="https://github.com/GustavoBonfimS"
@@ -13,15 +13,6 @@ function Footer() {
           rel="noreferrer"
         >
           Gustavo Bonfim
-        </a>
-        {' and '}
-        <a
-          className="font-semibold text-wedding underline"
-          href="https://github.com/OtavioPortella"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Otavio Portella
         </a>
       </div>
     </footer>
