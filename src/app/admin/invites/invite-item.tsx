@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card';
-import { Invite } from '~/models/Invite';
+import type { Invite } from '~/models/Invite';
 import InviteDialog from './invite-dialog';
 import RemoveDialog from './remove-dialog';
 
@@ -49,7 +49,7 @@ function InviteItem({ invite }: InviteItemProps) {
       </div>
       <Card
         key={invite.id}
-        className="flex flex-col print:hidden hover:ring-1 hover:ring-foreground"
+        className="flex flex-col hover:ring-1 hover:ring-foreground print:hidden"
       >
         <CardHeader>
           <CardTitle className="flex flex-col items-center gap-4">
@@ -76,7 +76,7 @@ function InviteItem({ invite }: InviteItemProps) {
             </div>
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex-1 flex flex-col gap-4 divide-y">
+        <CardContent className="flex flex-1 flex-col gap-4 divide-y">
           {!invite.guests?.length && (
             <span className="font-light text-slate-800 italic">
               Nenhum convidado adicionado a este convite
@@ -84,7 +84,10 @@ function InviteItem({ invite }: InviteItemProps) {
           )}
           <ul>
             {invite.guests?.map((guest) => (
-              <li className="flex w-full items-center justify-between">
+              <li
+                key={guest.id}
+                className="flex w-full items-center justify-between"
+              >
                 <span key={guest.id}>{guest.name}</span>
                 {guest.willBePresent && <Check size={25} color="green" />}
               </li>

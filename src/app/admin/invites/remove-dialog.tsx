@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { toast } from 'sonner';
 import {
   AlertDialog,
@@ -15,7 +15,7 @@ import {
   AlertDialogTrigger,
 } from '~/components/ui/alert-dialog';
 import {
-  InviteIndexResponse,
+  type InviteIndexResponse,
   deleteInvite as deleteInviteFn,
 } from '~/data/invite-data';
 

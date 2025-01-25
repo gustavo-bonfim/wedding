@@ -4,10 +4,10 @@
 import '../lib/dayj';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 // We can not useState or useRef in a server component, which is why we are
 // extracting this part out into it's own file with 'use client' on top
-import { PropsWithChildren, useState } from 'react';
-import { ThemeProvider } from './theme-provider';
+import { type PropsWithChildren, useState } from 'react';
 
 export default function Providers({ children }: PropsWithChildren) {
   const [queryClient] = useState(() => {
@@ -21,13 +21,8 @@ export default function Providers({ children }: PropsWithChildren) {
   });
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
+    <NuqsAdapter>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </ThemeProvider>
+    </NuqsAdapter>
   );
 }

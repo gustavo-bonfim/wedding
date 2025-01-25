@@ -12,11 +12,11 @@ function TimelineItem({ content, title, year }: TimelineItemProps) {
       <div className="absolute top-px left-1/2 translate-x-[-50%] translate-y-[-50%] rounded-full border border-gold bg-background p-2">
         <Heart size={10} />
       </div>
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex flex-1 items-center justify-center">
         <span className="text-4xl text-wedding">{year}</span>
       </div>
-      <div className="flex-1 max-w-px bg-zinc-200" />
-      <div className="flex-1 flex flex-col gap-2 group-even:text-right">
+      <div className="max-w-px flex-1 bg-zinc-200" />
+      <div className="flex flex-1 flex-col gap-2 group-even:text-right">
         <span className="font-semibold text-lg text-wedding">{title}</span>
         <span>{content}</span>
       </div>

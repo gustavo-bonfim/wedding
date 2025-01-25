@@ -1,4 +1,4 @@
-import { Invite } from './Invite';
+import type { Invite } from './Invite';
 
 export interface Guest {
   id: string;

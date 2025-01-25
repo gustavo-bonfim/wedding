@@ -30,6 +30,7 @@ async function PreWedding() {
           {images.map((image) => (
             <CarouselItem key={image.pathname} className="basis-1/3">
               <ImageDialog
+                altTitle="Imagem do pré wedding em tela cheia"
                 image={image.url}
                 trigger={
                   <Image

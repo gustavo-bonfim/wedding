@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Loader, Trash } from 'lucide-react';
-import { ReactNode, useMemo, useState } from 'react';
+import { type ReactNode, useMemo, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -26,8 +26,8 @@ import {
   FormMessage,
 } from '~/components/ui/form';
 import { Input } from '~/components/ui/input';
-import { InviteIndexResponse } from '~/data/invite-data';
-import { Invite } from '~/models/Invite';
+import type { InviteIndexResponse } from '~/data/invite-data';
+import type { Invite } from '~/models/Invite';
 import api from '~/services/api';
 
 type InviteDialogProps = {

@@ -1,4 +1,4 @@
-import { Invite } from '~/models/Invite';
+import type { Invite } from '~/models/Invite';
 import api from '~/services/api';
 
 export type InviteIndexResponse = {
