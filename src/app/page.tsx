@@ -88,10 +88,10 @@ function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Ver lista de presentes
+                Lista de presentes Magalu
               </a>
             </Button>
-            {/* <Button variant="outline" type="button">
+            <Button variant="outline" type="button">
               <a
                 href="https://lista.havan.com.br/Convidado/ItensListaPresente/734798"
                 target="_blank"
@@ -99,7 +99,7 @@ function Home() {
               >
                 Lista de presentes Havan
               </a>
-            </Button> */}
+            </Button>
           </div>
         </SectionContent>
 
