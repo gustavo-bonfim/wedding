@@ -126,25 +126,30 @@ function PresenceForm() {
               />
             </div>
           ))}
-          <Button
-            type="submit"
-            className="mx-auto mt-6 flex lg:mt-4"
-            disabled={isPending}
-            variant="outline"
-          >
-            <motion.div
-              className="flex items-center justify-center"
-              animate={{
-                width: isPending ? 'auto' : 100,
-              }}
+          <div className="group relative">
+            <Button
+              type="submit"
+              className="mx-auto mt-6 flex lg:mt-4"
+              disabled
+              variant="outline"
             >
-              {isPending ? (
-                <Loader className="h-4 w-4 animate-spin text-white" />
-              ) : (
-                'Confirmar'
-              )}
-            </motion.div>
-          </Button>
+              <span className="-bottom-10 absolute z-10 rounded-md bg-black p-2 font-semibold text-sm text-white opacity-0 transition-opacity duration-300 group-hover:visible group-hover:opacity-100">
+                O prazo para confirmar presença já passou.
+              </span>
+              <motion.div
+                className="flex items-center justify-center"
+                animate={{
+                  width: isPending ? 'auto' : 100,
+                }}
+              >
+                {isPending ? (
+                  <Loader className="h-4 w-4 animate-spin text-white" />
+                ) : (
+                  'Confirmar'
+                )}
+              </motion.div>
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
