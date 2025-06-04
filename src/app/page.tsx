@@ -4,7 +4,7 @@ import FadeDiv from '~/components/fade-div';
 import Footer from '~/components/footer';
 import Header from '~/components/header';
 import MainLogo from '~/components/main-logo';
-// import PreWedding from '~/components/pre-wedding';
+import PreWedding from '~/components/pre-wedding';
 import SectionContent from '~/components/section-content';
 import SectionTitle from '~/components/section-title';
 import TimelineItem from '~/components/timeline-item';
@@ -62,11 +62,11 @@ function Home() {
           </p>
         </SectionContent>
 
-        {/* <SectionContent>
+        <SectionContent>
           <SectionTitle>Pre Wedding</SectionTitle>
 
           <PreWedding />
-        </SectionContent> */}
+        </SectionContent>
 
         <SectionContent>
           <SectionTitle id="presentes">Lista de presentes</SectionTitle>
